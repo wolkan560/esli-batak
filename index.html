@@ -626,6 +626,33 @@
     </div>
 
     <div class="controls">
+   <hr>
+
+<label><input type="checkbox" id="lock0"> Kuzey Sabit</label>
+<label><input type="checkbox" id="lock1"> Doğu Sabit</label>
+<label><input type="checkbox" id="lock2"> Güney Sabit</label>
+<label><input type="checkbox" id="lock3"> Batı Sabit</label>
+
+<button id="partialDealBtn">
+Sabit Ellerle Yeniden Dağıt
+</button>
+       <select id="swapPlayer1">
+  <option value="0">Kuzey</option>
+  <option value="1">Doğu</option>
+  <option value="2">Güney</option>
+  <option value="3">Batı</option>
+</select>
+
+<select id="swapPlayer2">
+  <option value="1">Doğu</option>
+  <option value="2">Güney</option>
+  <option value="3">Batı</option>
+  <option value="0">Kuzey</option>
+</select>
+
+<button id="swapHandsBtn">
+  Elleri Yer Değiştir
+</button>
       <button class="primary" id="dealBtn">Yeni El Dağıt</button>
       <button id="startBtn">Oyunu Başlat</button>
       <button id="showAllBtn">Tüm Eller Aç</button>
@@ -685,15 +712,10 @@
 
           <div class="played-area">
             <div class="trick-title">
-              <div>Ortadaki el</div>
-              <div id="winnerText">Henüz tur yok</div>
             </div>
             <div class="trick-grid" id="trickGrid"></div>
             <div class="center-info">
               <div class="legend">
-                <span>• Tüm kartlar açık</span>
-                <span>• Sıradaki kartı oynat</span>
-                <span>• Uymayan hamle engellenir</span>
               </div>
               <div class="meta">
                 <label class="mini">Başlayan oyuncu:</label>
@@ -773,8 +795,6 @@
   </div>
 
   <div class="bottombar footer">
-    <div>OBS Browser Source için uygundur. Arka plan yarı şeffaftır.</div>
-    <div>İpucu: Bir kartı oynamak için kartın üstüne tıkla.</div>
   </div>
 </div>
 
@@ -940,6 +960,95 @@ teamScoreB2: el("teamScoreB2"),
     render();
   }
 
+function redealKeepingSelectedHands() {
+
+    const locked = [];
+
+    for(let i=0;i<4;i++){
+        if(document.getElementById(`lock${i}`).checked){
+            locked.push(i);
+        }
+    }
+
+    if(locked.length === 0){
+        alert("En az 1 oyuncu seç.");
+        return;
+    }
+
+    const fixedCards = [];
+    const newHands = [[],[],[],[]];
+
+    locked.forEach(player=>{
+        newHands[player] = [...state.hands[player]];
+        fixedCards.push(...state.hands[player]);
+    });
+
+    const deck = createDeck();
+
+    const remainingDeck = deck.filter(deckCard =>
+
+        !fixedCards.some(card =>
+            card.suit === deckCard.suit &&
+            card.rank === deckCard.rank
+        )
+
+    );
+
+    shuffle(remainingDeck);
+
+    const unlocked =
+        [0,1,2,3].filter(x => !locked.includes(x));
+
+    unlocked.forEach(player=>{
+
+        while(newHands[player].length < 13){
+
+            newHands[player].push(
+                remainingDeck.pop()
+            );
+
+        }
+
+    });
+
+    for (const hand of newHands) {
+    hand.sort(compareCards);
+}
+
+   state.hands = newHands;
+
+state.currentTrick = [];
+state.completedTricks = [];
+
+state.winnerOfLastTrick = null;
+
+state.scores = {
+    A: 0,
+    B: 0
+};
+
+render();
+
+showToast("Seçilen eller korunarak yeni dağıtım yapıldı.");
+}
+
+function swapPlayerHands() {
+
+    const p1 = Number(el("swapPlayer1").value);
+    const p2 = Number(el("swapPlayer2").value);
+
+    if (p1 === p2) {
+        showToast("Aynı oyuncu seçilemez.");
+        return;
+    }
+
+    // Elleri değiştir
+    [state.hands[p1], state.hands[p2]] = [state.hands[p2], state.hands[p1]];
+
+    render();
+
+    showToast(getSeatLabel(p1) + " ile " + getSeatLabel(p2) + " elleri değiştirildi.");
+}
   function compareCards(a, b) {
     if (a.suit !== b.suit) return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
     return b.value - a.value;
@@ -1604,6 +1713,16 @@ ui.teamScoreB2.textContent = scoreB;
 
     render();
 });
+el("partialDealBtn").addEventListener(
+    "click",
+    redealKeepingSelectedHands
+);
+
+el("swapHandsBtn").addEventListener(
+    "click",
+    swapPlayerHands
+);
+
     el("dealBtn").addEventListener("click", () => {
       if (state.phase === "playing" && state.currentTrick.length && !confirm("Yeni el dağıtılsın mı? Mevcut tur silinecek.")) return;
       dealNewHand();
