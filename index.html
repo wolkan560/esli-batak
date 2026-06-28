@@ -146,11 +146,11 @@
     }
 
     .status-left, .status-right {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
 
      .sidepanel h2 {
     font-size: 13px;
@@ -209,6 +209,21 @@
     gap: 12px;
     min-height: 100%;
 }
+
+.score-board{
+
+    position:absolute;
+
+    left:20px;
+
+    top:110px;
+
+    width:220px;
+
+    z-index:5;
+}
+
+
 
     .players {
     display: grid;
@@ -395,6 +410,7 @@
     gap: 12px;
     align-items: center;
     justify-items: center;
+    position:relative;
 }
 
     .trick-title {
@@ -615,6 +631,305 @@
       .app { height: auto; min-height: 100vh; overflow: visible; }
       .sidepanel { min-height: 420px; }
     }
+
+
+/* =========================
+   İHALE PENCERESİ
+========================= */
+
+.bid-modal{
+    width:100%;
+    max-width:340px;
+    margin:auto;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.bid-modal.hidden{
+    display:none;
+}
+
+.bid-box{
+    width:380px;
+    max-width:95vw;
+    background:linear-gradient(
+        180deg,
+        rgba(24,33,52,.98),
+        rgba(14,19,32,.98)
+    );
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.bid-title{
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.bid-player{
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.bid-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+.bid-buttons button{
+    min-width:42px;
+    height:40px;
+}
+
+.bid-buttons button.pass{
+    min-width:56px;
+    border-color:#ff7d7d;
+}
+
+#bidPanel{
+    position:absolute;
+    left:45%;
+    top:467px;
+    transform:translateX(-50%);
+    z-index:50;
+}
+
+#bidPanel.hidden{
+    display:none;
+}
+
+
+.contract-info{
+    margin-top:8px;
+    padding:8px 12px;
+    border-radius:10px;
+    font-weight:700;
+    background:rgba(255,215,0,.12);
+    border:1px solid rgba(255,215,0,.35);
+}
+
+
+.score-board{
+
+    margin-top:18px;
+    width:220px;
+
+    background:rgba(15,20,30,.95);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.score-title{
+
+    text-align:center;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+    color:#ffd54a;
+}
+
+.score-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:8px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    font-size:15px;
+}
+
+.score-target{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    color:#8be98b;
+}
+
+
+.match-modal{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+}
+
+.match-modal.hidden{
+
+    display:none;
+
+}
+
+.match-window{
+
+    width:425px;
+
+    max-width:92%;
+
+    background:#232323;
+
+    border:3px solid #d8af37;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 0 35px rgba(255,215,0,.55);
+
+}
+
+.match-title{
+
+    font-size:34px;
+
+    color:#FFD700;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.match-winner{
+
+    font-size:28px;
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+.match-score{
+
+    font-size:42px;
+
+    color:#7CFC00;
+
+    font-weight:bold;
+
+    margin-bottom:30px;
+
+}
+
+.match-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+}
+
+.match-buttons button{
+
+    min-width:150px;
+
+    padding:12px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+
+
+.final-score-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:28px;
+
+    margin:22px 0;
+
+}
+
+.final-score-row span:first-child{
+
+    color:#ffffff;
+
+    font-weight:600;
+
+}
+
+.score-red{
+
+    color:#ff4d4d;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.score-green{
+
+    color:#67e34d;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+#matchScore hr{
+
+    border:none;
+
+    border-top:1px solid rgba(255,255,255,.18);
+
+    margin:18px 0;
+
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -654,7 +969,12 @@ Sabit Ellerle Yeniden Dağıt
   Elleri Yer Değiştir
 </button>
       <button class="primary" id="dealBtn">Yeni El Dağıt</button>
-      <button id="startBtn">Oyunu Başlat</button>
+
+<button id="bidStartBtn">
+    İhale Başlat
+</button>
+
+<button id="startBtn">Oyunu Başlat</button>
       <button id="showAllBtn">Tüm Eller Aç</button>
       <button id="resetBtn">Bu Eli Sıfırla</button>
       <button id="undoBtn">Geri Al</button>
@@ -668,14 +988,39 @@ Sabit Ellerle Yeniden Dağıt
     <div class="sidepanel">
       <div class="table">
         <div class="status-left">
-          <div class="pill current" id="dealPill">El: -</div>
-          <div class="pill" id="phasePill">Aşama: Dağıtım</div>
-          <div class="pill" id="turnPill">Sıra: -</div>
-          <div class="pill" id="trumpPill">Koz: -</div>
-          <div class="pill" id="trickPill">Tur: 0 / 13</div>
-        </div>
-        <div class="status-right">
-                  </div>
+    <div class="pill current" id="dealPill">El: -</div>
+    <div class="pill" id="phasePill">Aşama: Dağıtım</div>
+    <div class="pill" id="turnPill">Sıra: -</div>
+    <div class="pill" id="trumpPill">Koz: -</div>
+    <div class="pill" id="trickPill">Tur: 0 / 13</div>
+    <div id="contractInfo" class="contract-info"></div>
+</div>
+
+<div class="status-right">
+</div>
+
+<!-- BURAYA EKLE -->
+<div class="score-board">
+
+    <div class="score-title">
+        SKOR TABLOSU
+    </div>
+
+    <div class="score-row">
+        <span>Kuzey - Güney</span>
+        <span id="scoreA">0</span>
+    </div>
+
+    <div class="score-row">
+        <span>Doğu - Batı</span>
+        <span id="scoreB">0</span>
+    </div>
+
+    <div class="score-target">
+        Hedef : 61
+    </div>
+
+</div>
       </div>
 
       <div class="board">
@@ -710,27 +1055,39 @@ Sabit Ellerle Yeniden Dağıt
 </div>
           </div>
 
-          <div class="played-area">
-            <div class="trick-title">
-            </div>
-            <div class="trick-grid" id="trickGrid"></div>
-            <div class="center-info">
-              <div class="legend">
-              </div>
-              <div class="meta">
-                <label class="mini">Başlayan oyuncu:</label>
-                <select id="leaderSelect"></select>
-                <label class="mini">Koz:</label>
-                <select id="trumpSelect">
-                  <option value="">Yok</option>
-                  <option value="S">Maça ♠</option>
-                  <option value="H">Kupa ♥</option>
-                  <option value="D">Karo ♦</option>
-                  <option value="C">Sinek ♣</option>
-                </select>
-              </div>
-            </div>
-          </div>
+         <div class="played-area">
+
+  <div class="trick-title">
+  </div>
+
+  <div class="trick-grid" id="trickGrid"></div>
+
+  <div class="center-info">
+
+    <div class="legend">
+    </div>
+
+    <div class="meta">
+      <label class="mini">Başlayan oyuncu:</label>
+      <select id="leaderSelect"></select>
+
+      <label class="mini">Koz:</label>
+      <select id="trumpSelect">
+        <option value="">Yok</option>
+        <option value="S">Maça ♠</option>
+        <option value="H">Kupa ♥</option>
+        <option value="D">Karo ♦</option>
+        <option value="C">Sinek ♣</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- İHALE PANELİ BURADA -->
+
+  
+
+</div>
 
           <div class="seat" id="seat2">
             <div class="seat-header">
@@ -798,6 +1155,21 @@ Sabit Ellerle Yeniden Dağıt
   </div>
 </div>
 
+<div id="bidPanel" class="bid-modal hidden">
+
+    <div class="bid-box">
+       
+        <div class="bid-title" id="mandatorySeven"></div>
+        <div class="bid-player" id="bidPlayerName">
+            Batı teklif seç
+        </div>
+
+        <div class="bid-buttons" id="bidButtons"></div>
+
+    </div>
+
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -818,6 +1190,7 @@ Sabit Ellerle Yeniden Dağıt
     hands: [[], [], [], []],
     selectedTrump: "",
     leader: 0,
+    contractInfo: "",
     currentTurn: 0,
     currentTrick: [],
     completedTricks: [],
@@ -825,16 +1198,26 @@ Sabit Ellerle Yeniden Dağıt
     redo: [],
     revealedSeat: null,
     lockedSeats: [],
+    trickAnimating: false,
+    matchTarget: 61,
+    extraDeal: false,
     phase: "distribution",
     winnerOfLastTrick: null,
     savedHands: [],
     scores: { A: 0, B: 0 },
-
+    matchScore: {
+    A: 0,
+    B: 0
+},
+    bidStarter: null,
+    nextBidStarter: null,
     bid: {
         currentBid: null,
-        winner: null,
-        currentPlayer: null,
-        passed: [false, false, false, false]
+    winner: null,
+    currentPlayer: null,
+    passed: [false, false, false, false],
+    activePlayers: [true,true,true,true],
+    passCount: 0
     }
 };
 
@@ -930,35 +1313,128 @@ teamScoreB2: el("teamScoreB2"),
     return array;
   }
 
-  function dealNewHand() {
-    const snapshot = cloneState();
-    if (state.hands.some(h => h.length || state.currentTrick.length || state.completedTricks.length)) {
-      state.redo = [];
-      // Keep previous hand accessible via save, but not necessary in active state.
-    }
-    const deck = createDeck();
-    state.hands = [[], [], [], []];
-    for (let i = 0; i < deck.length; i++) {
-      state.hands[i % 4].push(deck[i]);
-    }
-    for (const hand of state.hands) hand.sort(compareCards);
-    state.dealNo += 1;
+
+function resetBid(){
+
+    state.bid.currentBid = null;
+    state.bid.winner = null;
+    state.bid.currentPlayer = null;
+
+    state.bid.passCount = 0;
+
+    state.bid.passed = [
+        false,
+        false,
+        false,
+        false
+    ];
+
+    state.bid.activePlayers = [
+        true,
+        true,
+        true,
+        true
+    ];
+
+}
+
+
+function resetDeal(){
+
     state.selectedTrump = "";
+
     state.leader = 0;
+
     state.currentTurn = 0;
+
     state.currentTrick = [];
+
     state.completedTricks = [];
+
+    state.scores = {
+        A:0,
+        B:0
+    };
+
     state.history = [];
+
     state.redo = [];
+
     state.phase = "distribution";
+
     state.winnerOfLastTrick = null;
-    state.scores = { A: 0, B: 0 }; 
+
     state.revealedSeat = null;
+
     state.lockedSeats = [];
-    addHistory(`Yeni el dağıtıldı. Başlayan oyuncu: ${PLAYER_POSITIONS[state.leader]}.`);
+
+}
+
+
+
+function resetMatch(){
+
+    state.matchScore = {
+
+        A:0,
+
+        B:0
+
+    };
+
+    state.extraDeal = false;
+
+}
+
+function startNewMatch(){
+
+    resetMatch();
+
+    dealNewHand();
+
+    el("matchModal").classList.add("hidden");
+
+    showToast("🏆 Yeni maç başladı.");
+
+}
+
+
+
+
+ function dealNewHand() {
+
+    const snapshot = cloneState();
+
+    if (state.hands.some(h => h.length || state.currentTrick.length || state.completedTricks.length)) {
+        state.redo = [];
+    }
+
+    const deck = createDeck();
+
+    state.hands = [[], [], [], []];
+
+    for (let i = 0; i < deck.length; i++) {
+        state.hands[i % 4].push(deck[i]);
+    }
+
+    for (const hand of state.hands) {
+        hand.sort(compareCards);
+    }
+
+    state.dealNo++;
+
+    resetBid();
+
+    resetDeal();
+
+    addHistory(
+        `Yeni el dağıtıldı. Başlayan oyuncu: ${PLAYER_POSITIONS[state.leader]}.`
+    );
+
     saveCurrentSnapshot(snapshot, false);
+
     render();
-  }
+}
 
 function redealKeepingSelectedHands() {
 
@@ -1172,56 +1648,124 @@ function isLegalPlay(player, card) {
     return true;
 }
 
-  function playCard(player, cardId) {
+  
+
+function playCard(player, cardId) {
+   
+    if (state.trickAnimating) return;
+
     const found = getHandIndexForCard(cardId);
+
     if (!found || found.player !== player) return;
+
     const card = state.hands[player][found.index];
+
     if (!isLegalPlay(player, card)) {
-      showToast("Bu elde önce çıkan renge uymak gerekiyor.");
-      return;
+
+        showToast("Bu elde önce çıkan renge uymak gerekiyor.");
+
+        return;
     }
 
     state.redo = [];
+
     state.history.push({
-      type: "play",
-      player,
-      card: { ...card },
-      before: cloneLite()
+        type: "play",
+        player,
+        card: { ...card },
+        before: cloneLite()
     });
 
     state.hands[player].splice(found.index, 1);
-    state.currentTrick.push({ player, card: { ...card } });
+
+    state.currentTrick.push({
+        player,
+        card: { ...card }
+    });
+
     state.currentTurn = (player + 3) % 4;
-    addHistory(`${PLAYER_POSITIONS[player]} oynadı: ${cardLabel(card)}.`);
 
+    addHistory(
+        `${PLAYER_POSITIONS[player]} oynadı: ${cardLabel(card)}.`
+    );
+
+    // Dördüncü kart atıldıysa
     if (state.currentTrick.length === 4) {
-      const winner = determineTrickWinner(state.currentTrick, state.selectedTrump);
-      state.completedTricks.push({
-        leader: state.leader,
-        winner,
-        trump: state.selectedTrump,
-        cards: state.currentTrick.map(x => ({...x.card}))
-      });
-      state.scores[TEAM_OF(winner)] += 1;
-      state.winnerOfLastTrick = winner;
-      state.history.push({
-        type: "trick",
-        winner,
-        trick: state.currentTrick.map(x => ({...x}))
-      });
-      addHistory(`Tur bitti. Kazanan: ${PLAYER_POSITIONS[winner]} (${TEAM_OF(winner) === "A" ? "Takım A" : "Takım B"}).`);
-      state.currentTrick = [];
-      state.leader = winner;
-      state.currentTurn = winner;
 
-      if (isDealOver()) {
-        state.phase = "finished";
-        addHistory("El tamamlandı.");
-      }
+        // Son kart da görünsün
+        render();
+    
+          state.trickAnimating = true;
+
+        setTimeout(() => {
+
+            const winner = determineTrickWinner(
+                state.currentTrick,
+                state.selectedTrump
+            );
+
+            state.completedTricks.push({
+
+                leader: state.leader,
+
+                winner,
+
+                trump: state.selectedTrump,
+
+                cards: state.currentTrick.map(x => ({ ...x.card }))
+
+            });
+
+            state.scores[TEAM_OF(winner)]++;
+
+            state.winnerOfLastTrick = winner;
+
+            state.history.push({
+
+                type: "trick",
+
+                winner,
+
+                trick: state.currentTrick.map(x => ({ ...x }))
+
+            });
+
+            addHistory(
+                `Tur bitti. Kazanan: ${PLAYER_POSITIONS[winner]} (${TEAM_OF(winner) === "A" ? "Takım A" : "Takım B"}).`
+            );
+
+            state.currentTrick = [];
+
+            state.leader = winner;
+
+            state.currentTurn = winner;
+
+            if (isDealOver()) {
+
+                calculateMatchScore();
+
+                checkMatchWinner();
+
+                state.phase = "finished";
+
+                addHistory("El tamamlandı.");
+            }
+
+           state.trickAnimating = false;
+
+            render();
+
+        }, 1000);
+
+        return;
     }
 
     render();
-  }
+}
+
+
+
+
 
   function determineTrickWinner(trick, trump) {
     const leadSuit = trick[0].card.suit;
@@ -1328,6 +1872,485 @@ function isLegalPlay(player, card) {
   }
 
 
+
+function resetBidState(){
+
+    state.bid = {
+        currentBid: null,
+        winner: null,
+        currentPlayer: state.bidStarter,
+        passed: [false,false,false,false],
+        activePlayers: [true,true,true,true],
+        passCount: 0
+    };
+}
+
+function openBidModal(){
+
+    determineBidStarter();
+    resetBidState();
+
+    state.revealedSeat =
+        state.bid.currentPlayer;
+
+    render(); // BUNU EKLE
+
+    document
+        .getElementById("bidPanel")
+        .classList.remove("hidden");
+
+    renderBidOptions();
+}
+
+
+function renderBidOptions(){
+  
+    state.revealedSeat =
+    state.bid.currentPlayer;
+
+   if(state.bid.currentBid){
+
+    document.getElementById(
+        "mandatorySeven"
+    ).textContent =
+        getSeatLabel(state.bid.winner)
+        + " "
+        + state.bid.currentBid
+        + " dedi";
+
+}else{
+
+    const mandatory =
+        getMandatorySevenPlayer(
+            state.bidStarter
+        );
+
+    document.getElementById(
+        "mandatorySeven"
+    ).textContent =
+        getSeatLabel(mandatory)
+        + " mecbur 7'ci";
+}
+
+    const player = state.bid.currentPlayer;
+
+    const playerName = getSeatLabel(player);
+
+    document.getElementById("bidPlayerName")
+        .textContent = playerName + " teklif seç";
+
+    const container =
+        document.getElementById("bidButtons");
+
+    container.innerHTML = "";
+
+    const passBtn =
+        document.createElement("button");
+
+    passBtn.textContent = "PAS";
+    passBtn.className = "pass";
+
+    passBtn.onclick = () => makeBidPass();
+
+    container.appendChild(passBtn);
+
+    const start =
+        state.bid.currentBid === null
+            ? 8
+            : state.bid.currentBid + 1;
+
+    for(let i=start;i<=13;i++){
+
+        const btn =
+            document.createElement("button");
+
+        btn.textContent = i;
+
+        btn.onclick = () => makeBid(i);
+
+        container.appendChild(btn);
+    }
+}
+
+function nextBidPlayer(){
+
+    const rotation = {
+        0: 3, // Kuzey -> Batı
+        3: 2, // Batı -> Güney
+        2: 1, // Güney -> Doğu
+        1: 0  // Doğu -> Kuzey
+    };
+
+    let p = state.bid.currentPlayer;
+
+    do{
+
+        p = rotation[p];
+
+    }while(
+        !state.bid.activePlayers[p]
+    );
+
+    state.bid.currentPlayer = p;
+   state.revealedSeat = p;
+
+render();
+}
+
+
+function makeBid(value){
+
+    state.bid.currentBid = value;
+
+    state.bid.winner =
+        state.bid.currentPlayer;
+
+    nextBidPlayer();
+
+    checkBidFinish();
+
+    renderBidOptions();
+}
+
+function makeBidPass(){
+
+    const player =
+        state.bid.currentPlayer;
+
+    state.bid.activePlayers[player] = false;
+
+    state.bid.passed[player] = true;
+
+    state.bid.passCount++;
+
+if(
+    state.bid.currentBid === null &&
+    state.bid.passCount === 3
+){
+
+    const activePlayer =
+        state.bid.activePlayers
+            .findIndex(x=>x);
+
+    state.bid.currentPlayer =
+        activePlayer;
+
+    state.revealedSeat =
+        activePlayer;
+
+    render();
+
+    renderForcedBid();
+
+    return;
+}
+    const active =
+        state.bid.activePlayers
+            .filter(x => x).length;
+
+    if(active <= 1){
+
+    const activePlayer =
+        state.bid.activePlayers
+            .findIndex(x=>x);
+
+    state.revealedSeat =
+        activePlayer;
+
+    render();
+
+    finishBid();
+
+    return;
+}
+
+    nextBidPlayer();
+
+    renderBidOptions();
+}
+
+
+
+
+
+
+function calculateMatchScore(){
+
+    const bidWinner = state.bid.winner;
+
+    if(bidWinner === null) return;
+
+    const bid = state.bid.currentBid;
+
+    const bidTeam =
+        TEAM_OF(bidWinner);
+
+    const otherTeam =
+        bidTeam === "A"
+            ? "B"
+            : "A";
+
+    const bidTricks =
+        state.scores[bidTeam];
+
+    const otherTricks =
+        state.scores[otherTeam];
+
+    // ihaleyi alan takım
+
+    if(bidTricks >= bid){
+
+        state.matchScore[bidTeam] +=
+            bidTricks;
+
+    }else{
+
+        state.matchScore[bidTeam] -=
+            bid;
+    }
+
+    // karşı takım
+
+    if(otherTricks === 0){
+
+        state.matchScore[otherTeam] -=
+            bid;
+
+    }else{
+
+        state.matchScore[otherTeam] +=
+            otherTricks;
+    }
+
+}
+
+
+function showMatchWinner(team){
+
+    const modal = el("matchModal");
+
+    const a = state.matchScore.A;
+    const b = state.matchScore.B;
+
+    el("matchWinner").textContent =
+        team === "A"
+        ? "🏆 Kuzey - Güney Kazandı"
+        : "🏆 Doğu - Batı Kazandı";
+
+    el("matchScore").innerHTML = `
+
+        <hr>
+
+        <div class="final-score-row">
+
+            <span>Kuzey - Güney</span>
+
+            <span class="${a < 0 ? 'score-red' : 'score-green'}">
+                ${a}
+            </span>
+
+        </div>
+
+        <hr>
+
+        <div class="final-score-row">
+
+            <span>Doğu - Batı</span>
+
+            <span class="${b < 0 ? 'score-red' : 'score-green'}">
+                ${b}
+            </span>
+
+        </div>
+
+        <hr>
+
+    `;
+
+    modal.classList.remove("hidden");
+
+}
+
+
+function checkMatchWinner(){
+
+    const a = state.matchScore.A;
+    const b = state.matchScore.B;
+
+    // Henüz hedef puana ulaşan yok
+    if(a < state.matchTarget && b < state.matchTarget){
+        return;
+    }
+
+    // İki takım da hedefi geçti
+    if(a >= state.matchTarget && b >= state.matchTarget){
+
+        // Berabere → Uzatma
+        if(a === b){
+
+            showToast("🏆 Berabere! Uzatma eli oynanacak.");
+
+            state.extraDeal = true;
+
+            return;
+        }
+
+        // Yüksek puan kazanır
+        if(a > b){
+
+            showMatchWinner("A");
+
+        }else{
+
+            showMatchWinner("B");
+
+        }
+
+        return;
+    }
+
+    // Sadece Kuzey-Güney hedefe ulaştı
+    if(a >= state.matchTarget){
+
+        showMatchWinner("A");
+
+        return;
+    }
+
+    // Sadece Doğu-Batı hedefe ulaştı
+    if(b >= state.matchTarget){
+
+        showMatchWinner("B");
+
+        return;
+    }
+
+}
+
+
+function newMatch(){
+
+    el("matchModal")
+        .classList
+        .add("hidden");
+
+    resetMatch();
+
+    dealNewHand();
+
+    render();
+
+    showToast(
+        "🏆 Yeni maç başladı."
+    );
+
+}
+
+
+function renderForcedBid(){
+
+    const container =
+        document.getElementById(
+            "bidButtons"
+        );
+
+    container.innerHTML = "";
+
+    for(let i=7;i<=13;i++){
+
+        const btn =
+            document.createElement(
+                "button"
+            );
+
+        btn.textContent = i;
+
+        btn.onclick = ()=>{
+
+            state.bid.currentBid = i;
+
+            state.bid.winner =
+                state.bid.currentPlayer;
+
+            finishBid();
+        };
+
+        container.appendChild(btn);
+    }
+
+    document.getElementById(
+        "bidPlayerName"
+    ).textContent =
+        getSeatLabel(
+            state.bid.currentPlayer
+        )
+        + " almak zorunda";
+}
+
+
+function checkBidFinish(){
+
+    const active =
+        state.bid.activePlayers
+            .filter(x => x).length;
+
+    if(active <= 1){
+
+        const winner =
+            state.bid.activePlayers.findIndex(x => x);
+
+        state.revealedSeat = winner;
+
+        render();
+
+        finishBid();
+    }
+}
+
+
+function finishBid(){
+
+    state.revealedSeat = null;
+
+    document
+    .getElementById("bidPanel")
+    .classList.add("hidden");
+
+    const winner =
+        state.bid.winner;
+
+    const bid =
+        state.bid.currentBid;
+
+    if(winner === null){
+
+        showToast("İhale oluşmadı.");
+
+        return;
+    }
+
+    addHistory(
+        `${getSeatLabel(winner)} `
+        + `${bid} aldı.`
+    );
+
+
+state.contractInfo =
+    getSeatLabel(winner)
+    + " aldı - Teklif "
+    + bid;
+
+    showToast(
+        getSeatLabel(winner)
+        + " "
+        + bid
+        + " aldı."
+    );
+
+    render();
+}
+
+
 function startGame() {
 
     state.selectedTrump = ui.trumpSelect.value || "";
@@ -1374,6 +2397,23 @@ function startGame() {
     saveAppData();
     showToast("Oyuncu adları güncellendi.");
   }
+
+
+function getSeatLabel(i) {
+  return el(`name${i + 1}`).textContent || PLAYER_POSITIONS[i];
+}
+
+function getMandatorySevenPlayer(starter){
+
+    const map = {
+        0: 1, // Kuzey başladıysa Doğu
+        3: 0, // Batı başladıysa Kuzey
+        2: 3, // Güney başladıysa Batı
+        1: 2  // Doğu başladıysa Güney
+    };
+
+    return map[starter];
+}
 
   function getSeatLabel(i) {
     return el(`name${i + 1}`).textContent || PLAYER_POSITIONS[i];
@@ -1587,6 +2627,13 @@ ui.teamScoreB2.textContent = scoreB;
     renderLog();
     renderSavedList();
     saveAppData();
+el("contractInfo").textContent =
+    state.contractInfo;
+el("scoreA").textContent =
+    state.matchScore.A;
+
+el("scoreB").textContent =
+    state.matchScore.B;
   }
 
   function showToast(text) {
@@ -1737,7 +2784,8 @@ el("swapHandsBtn").addEventListener(
     el("saveBtn").addEventListener("click", saveHand);
     el("clearSavedBtn").addEventListener("click", clearSaved);
     el("applyNamesBtn").addEventListener("click", applyNames);
-el("startBtn").addEventListener("click", startGame);
+    el("bidStartBtn").addEventListener("click", openBidModal);
+    el("startBtn").addEventListener("click", startGame);
     ui.trumpSelect.addEventListener("change", onTrumpChange);
     ui.leaderSelect.addEventListener("change", onLeaderChange);
   }
@@ -1785,11 +2833,100 @@ el("startBtn").addEventListener("click", startGame);
     });
 }
     render();
+
+el("closeMatchBtn").addEventListener("click",()=>{
+
+    // Popup kapansın
+    el("matchModal").classList.add("hidden");
+
+    // Maç puanı sıfırlansın
+    resetMatch();
+
+    // El ve ihale temizlensin
+    resetBid();
+
+    resetDeal();
+
+    // Kartlar toplansın
+    state.hands = [[], [], [], []];
+
+    render();
+
+    showToast("Maç kapatıldı.");
+
+});
+
+
+    el("newMatchBtn").addEventListener("click", startNewMatch);
     showToast("Hazır. Yeni el dağıt.");
   }
 
-  init();
+ function determineBidStarter(){
+
+    const BID_ROTATION = [0,3,2,1];
+
+    if(state.nextBidStarter === null){
+
+        state.bidStarter =
+            BID_ROTATION[
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+    }else{
+
+        state.bidStarter =
+            state.nextBidStarter;
+    }
+
+    const idx =
+        BID_ROTATION.indexOf(
+            state.bidStarter
+        );
+
+    state.nextBidStarter =
+        BID_ROTATION[
+            (idx + 1) % 4
+        ];
+}
+
+window.addEventListener("load", init);
 })();
+
 </script>
+
+<div id="matchModal" class="match-modal hidden">
+
+    <div class="match-window">
+
+        <div class="match-title">
+            🏆 MAÇ BİTTİ 🏆
+        </div>
+
+        <div id="matchWinner" class="match-winner">
+            Kuzey - Güney Kazandı
+        </div>
+
+        <div id="matchScore" class="match-score">
+            61 - 54
+        </div>
+
+        <div class="match-buttons">
+
+            <button id="newMatchBtn">
+                🔄 Yeni Maç
+            </button>
+
+            <button id="closeMatchBtn">
+                Kapat
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
