@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Batak Eğitim Masası</title>
   <style>
+
+
+/* =======================================================
+   ROOT
+======================================================= */
     :root{
       --bg: rgba(10, 14, 24, 0.92);
       --panel: rgba(20, 28, 44, 0.92);
@@ -40,6 +45,13 @@
       overflow: hidden;
     }
 
+
+
+/* =======================================================
+   APP LAYOUT
+======================================================= */
+
+
     .app {
       width: 100vw;
       height: 100vh;
@@ -48,6 +60,11 @@
       gap: 12px;
       padding: 14px;
     }
+
+
+/* =======================================================
+   TOP BAR
+======================================================= */
 
     .topbar, .bottombar, .sidepanel, .center, .seat {
       backdrop-filter: blur(8px);
@@ -102,6 +119,26 @@
       outline: none;
     }
 
+
+#leaderSelect,
+#trumpSelect{
+    appearance: auto;
+    -webkit-appearance: auto;
+
+    background-color: #1b2235;
+    color: #f3f7ff;
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+#leaderSelect option,
+#trumpSelect option{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+
+
     button {
       cursor: pointer;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
@@ -121,12 +158,74 @@
       background: rgba(255,255,255,0.04);
     }
 
+
+
+/* =======================================================
+   LAYOUT
+======================================================= */
+
    .layout {
     display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 10px;
     min-height: 0;
 }
+
+
+
+/* =======================================================
+   SIDEPANEL
+======================================================= */
+     .sidepanel h2 {
+    font-size: 13px;
+}
+
+.sidepanel button,
+.sidepanel input {
+    font-size: 12px;
+    padding: 6px 8px;
+}
+
+.saved-item .name,
+.log-item,
+.mini {
+    font-size: 11px;
+}
+
+
+.seat-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+
+.team-score {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffd166;
+    margin-top: 6px;
+}
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .pill strong { color: white; }
+    .pill.current { border-color: rgba(255,209,102,0.45); background: rgba(255,209,102,0.10); }
+    .pill.good { border-color: rgba(124,242,164,0.38); background: rgba(124,242,164,0.10); }
+    .pill.bad { border-color: rgba(255,107,107,0.38); background: rgba(255,107,107,0.10); }
+
+
+
+/* =======================================================
+   TABLE
+======================================================= */
 
     .table {
       display: grid;
@@ -152,63 +251,21 @@
     align-items: center;
 }
 
-     .sidepanel h2 {
-    font-size: 13px;
-}
 
-.sidepanel button,
-.sidepanel input {
-    font-size: 12px;
-    padding: 6px 8px;
-}
+ 
+/* =======================================================
+   BOARD
+======================================================= */
 
-.saved-item .name,
-.log-item,
-.mini {
-    font-size: 11px;
-}
-
-
-.seat-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.team-score {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffd166;
-    text-align: center;
-}
-
-.team-score {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: #ffd166;
-    margin-top: 6px;
-}
-    .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text);
-      font-size: 13px;
-    }
-    .pill strong { color: white; }
-    .pill.current { border-color: rgba(255,209,102,0.45); background: rgba(255,209,102,0.10); }
-    .pill.good { border-color: rgba(124,242,164,0.38); background: rgba(124,242,164,0.10); }
-    .pill.bad { border-color: rgba(255,107,107,0.38); background: rgba(255,107,107,0.10); }
-
-   .board {
+  .board {
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 12px;
     min-height: 100%;
 }
+
+
+/* Skor tablosu konum */
 
 .score-board{
 
@@ -216,14 +273,16 @@
 
     left:20px;
 
-    top:110px;
+    top:280px;
 
     width:220px;
 
     z-index:5;
 }
 
-
+/* =======================================================
+   PLAYERS
+======================================================= */
 
     .players {
     display: grid;
@@ -240,6 +299,11 @@
       gap: 12px;
       min-height: 0;
     }
+
+
+/* =======================================================
+   SEATS
+======================================================= */
 
    .seat {
   background: linear-gradient(180deg, rgba(24,33,52,.92), rgba(14,19,32,.92));
@@ -299,6 +363,8 @@
       color: var(--muted);
     }
 
+
+
     .count {
       font-size: 13px;
       color: var(--muted);
@@ -318,11 +384,12 @@
  
 
 
-    .card-back{
-      width:44px;height:58px;border-radius:12px;
-      background:linear-gradient(135deg,#334155,#0f172a);
-      border:1px solid rgba(255,255,255,.15);
-}
+
+/* =======================================================
+   CARDS
+======================================================= */
+
+
 .card {
       width: 44px;
       height: 58px;
@@ -344,6 +411,12 @@
       transition: transform .09s ease, box-shadow .12s ease, opacity .2s ease;
     }
 
+
+    .card-back{
+      width:44px;height:58px;border-radius:12px;
+      background:linear-gradient(135deg,#334155,#0f172a);
+      border:1px solid rgba(255,255,255,.15);
+}
     .card:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 18px rgba(0,0,0,.22);
@@ -398,6 +471,12 @@
       height: 58px;
       font-size: 12px;
     }
+
+
+/* =======================================================
+   PLAYED AREA
+======================================================= */
+
 
     .played-area {
     background: linear-gradient(180deg, rgba(16,24,38,.95), rgba(10,14,24,.95));
@@ -485,28 +564,27 @@
       align-items: center;
     }
 
-    .sidepanel {
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 12px;
-      padding: 12px;
-      min-height: 0;
-      background: linear-gradient(180deg, rgba(24,33,52,.92), rgba(14,19,32,.92));
-    }
 
-.sidepanel {
-    font-size: 12px;
+
+
+/* Legacy - v6.0
+   Kullanım kontrol edilmeden silmeyin. */
+ .game-panel {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 12px;
+    padding: 12px;
+    min-height: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(24,33,52,.92),
+        rgba(14,19,32,.92)
+    );
 }
 
-.sidepanel h2 {
-    font-size: 13px;
-}
-
-.sidepanel button,
-.sidepanel input {
-    padding: 6px 8px;
-    font-size: 11px;
-}
+/* =======================================================
+   PANELS
+======================================================= */
 
     .panel-box {
       border-radius: 14px;
@@ -578,6 +656,66 @@
       flex-wrap: wrap;
     }
 
+
+
+
+
+/* =======================================================
+   SCORE BOARD
+======================================================= */
+
+.score-board{
+
+    background:rgba(15,20,30,.95);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.score-title{
+
+    text-align:center;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+    color:#ffd54a;
+}
+
+.score-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:8px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    font-size:15px;
+}
+
+.score-target{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    color:#8be98b;
+}
+
+/* =======================================================
+   TOAST
+======================================================= */
+
     .toast {
       position: fixed;
       left: 50%;
@@ -625,17 +763,13 @@
       display: none !important;
     }
 
-    @media (max-width: 1280px) {
-      .layout { grid-template-columns: 1fr; }
-      body { overflow: auto; }
-      .app { height: auto; min-height: 100vh; overflow: visible; }
-      .sidepanel { min-height: 420px; }
-    }
 
 
-/* =========================
-   İHALE PENCERESİ
-========================= */
+
+
+/* =======================================================
+   BID MODAL
+======================================================= */
 
 .bid-modal{
     width:100%;
@@ -697,6 +831,8 @@
     border-color:#ff7d7d;
 }
 
+
+
 #bidPanel{
     position:absolute;
     left:45%;
@@ -710,6 +846,8 @@
 }
 
 
+
+
 .contract-info{
     margin-top:8px;
     padding:8px 12px;
@@ -720,56 +858,9 @@
 }
 
 
-.score-board{
-
-    margin-top:18px;
-    width:220px;
-
-    background:rgba(15,20,30,.95);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:12px;
-
-    padding:12px;
-}
-
-.score-title{
-
-    text-align:center;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    margin-bottom:12px;
-
-    color:#ffd54a;
-}
-
-.score-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:8px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
-    font-size:15px;
-}
-
-.score-target{
-
-    margin-top:12px;
-
-    text-align:center;
-
-    font-weight:bold;
-
-    color:#8be98b;
-}
+/* =======================================================
+   MATCH MODAL
+======================================================= */
 
 
 .match-modal{
@@ -928,6 +1019,17 @@
 }
 
 
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+
+    @media (max-width: 1280px) {
+      .layout { grid-template-columns: 1fr; }
+      body { overflow: auto; }
+      .app { height: auto; min-height: 100vh; overflow: visible; } 
+      .sidepanel { min-height: 420px; }
+    }
 
 
   </style>
@@ -951,14 +1053,15 @@
 <button id="partialDealBtn">
 Sabit Ellerle Yeniden Dağıt
 </button>
-       <select id="swapPlayer1">
+  
+<select id="swapPlayer1" class="swap-select">
   <option value="0">Kuzey</option>
   <option value="1">Doğu</option>
   <option value="2">Güney</option>
   <option value="3">Batı</option>
 </select>
 
-<select id="swapPlayer2">
+<select id="swapPlayer2" class="swap-select">
   <option value="1">Doğu</option>
   <option value="2">Güney</option>
   <option value="3">Batı</option>
@@ -985,7 +1088,7 @@ Sabit Ellerle Yeniden Dağıt
   </div>
 
   <div class="layout">
-    <div class="sidepanel">
+    <div class="game-panel">
       <div class="table">
         <div class="status-left">
     <div class="pill current" id="dealPill">El: -</div>
@@ -1016,9 +1119,9 @@ Sabit Ellerle Yeniden Dağıt
         <span id="scoreB">0</span>
     </div>
 
-    <div class="score-target">
-        Hedef : 61
-    </div>
+<div class="score-target">
+    <span id="targetScore"></span>'de Biter.
+</div>
 
 </div>
       </div>
@@ -1126,7 +1229,7 @@ Sabit Ellerle Yeniden Dağıt
       </div>
     </div>
 
-    <div class="sidepanel">
+    <div class="right-panel">
       <div class="panel-box">
         <h2>Oyuncu adları</h2>
         <div class="panel-row">
@@ -1199,7 +1302,7 @@ Sabit Ellerle Yeniden Dağıt
     revealedSeat: null,
     lockedSeats: [],
     trickAnimating: false,
-    matchTarget: 61,
+    matchTarget: 41,
     extraDeal: false,
     phase: "distribution",
     winnerOfLastTrick: null,
@@ -1879,9 +1982,10 @@ function resetBidState(){
         currentBid: null,
         winner: null,
         currentPlayer: state.bidStarter,
-        passed: [false,false,false,false],
-        activePlayers: [true,true,true,true],
-        passCount: 0
+        passed: [false, false, false, false],
+        activePlayers: [true, true, true, true],
+        passCount: 0,
+        hasBid: [false, false, false, false]
     };
 }
 
@@ -1902,64 +2006,72 @@ function openBidModal(){
     renderBidOptions();
 }
 
-
 function renderBidOptions(){
-  
-    state.revealedSeat =
-    state.bid.currentPlayer;
 
-   if(state.bid.currentBid){
+    state.revealedSeat = state.bid.currentPlayer;
 
-    document.getElementById(
-        "mandatorySeven"
-    ).textContent =
-        getSeatLabel(state.bid.winner)
-        + " "
-        + state.bid.currentBid
-        + " dedi";
+    if(state.bid.currentBid){
 
-}else{
+        document.getElementById("mandatorySeven").textContent =
+            getSeatLabel(state.bid.winner) +
+            " " +
+            state.bid.currentBid +
+            " dedi";
 
-    const mandatory =
-        getMandatorySevenPlayer(
-            state.bidStarter
-        );
+    }else{
 
-    document.getElementById(
-        "mandatorySeven"
-    ).textContent =
-        getSeatLabel(mandatory)
-        + " mecbur 7'ci";
-}
+        const mandatory =
+            getMandatorySevenPlayer(state.bidStarter);
+
+        document.getElementById("mandatorySeven").textContent =
+            getSeatLabel(mandatory) +
+            " mecbur 7'ci";
+    }
 
     const player = state.bid.currentPlayer;
 
-    const playerName = getSeatLabel(player);
-
-    document.getElementById("bidPlayerName")
-        .textContent = playerName + " teklif seç";
+    document.getElementById("bidPlayerName").textContent =
+        getSeatLabel(player) + " teklif seç";
 
     const container =
         document.getElementById("bidButtons");
 
     container.innerHTML = "";
 
-    const passBtn =
-        document.createElement("button");
+    // İlk 3 oyuncu PAS dediyse son oyuncu mecburi teklif verecek
 
-    passBtn.textContent = "PAS";
-    passBtn.className = "pass";
+const passCount =
+    state.bid.passed.filter(x => x).length;
 
-    passBtn.onclick = () => makeBidPass();
+const forcedBid =
+    state.bid.currentBid === null &&
+    passCount === 3;
 
-    container.appendChild(passBtn);
+    // Mecburi teklif değilse PAS butonunu göster
+    if (!forcedBid) {
 
-    const start =
-        state.bid.currentBid === null
-            ? 8
-            : state.bid.currentBid + 1;
+        const passBtn =
+            document.createElement("button");
 
-    for(let i=start;i<=13;i++){
+        passBtn.textContent = "PAS";
+        passBtn.className = "pass";
+        passBtn.onclick = () => makeBidPass();
+
+        container.appendChild(passBtn);
+    }
+
+    // Tekliflerin başlangıcı
+    let start;
+
+    if (forcedBid) {
+        start = 7;
+    } else if (state.bid.currentBid === null) {
+        start = 8;
+    } else {
+        start = state.bid.currentBid + 1;
+    }
+
+    for(let i = start; i <= 13; i++){
 
         const btn =
             document.createElement("button");
@@ -1972,29 +2084,34 @@ function renderBidOptions(){
     }
 }
 
+
+
+
 function nextBidPlayer(){
 
+    if(state.bid.hasBid.every(x => x)){
+        finishBid();
+        return;
+    }
+
     const rotation = {
-        0: 3, // Kuzey -> Batı
-        3: 2, // Batı -> Güney
-        2: 1, // Güney -> Doğu
-        1: 0  // Doğu -> Kuzey
+        0: 3,
+        3: 2,
+        2: 1,
+        1: 0
     };
 
     let p = state.bid.currentPlayer;
 
     do{
-
         p = rotation[p];
-
-    }while(
-        !state.bid.activePlayers[p]
-    );
+    }while(state.bid.hasBid[p]);
 
     state.bid.currentPlayer = p;
-   state.revealedSeat = p;
+    state.revealedSeat = p;
 
-render();
+    render();
+    renderBidOptions();
 }
 
 
@@ -2002,73 +2119,35 @@ function makeBid(value){
 
     state.bid.currentBid = value;
 
-    state.bid.winner =
-        state.bid.currentPlayer;
+    state.bid.winner = state.bid.currentPlayer;
+
+    state.bid.hasBid[state.bid.currentPlayer] = true;
+
+    // 13 denildiyse ihale hemen biter
+    if (value === 13) {
+        finishBid();
+        return;
+    }
 
     nextBidPlayer();
-
-    checkBidFinish();
-
-    renderBidOptions();
 }
+
 
 function makeBidPass(){
 
-    const player =
-        state.bid.currentPlayer;
+    const player = state.bid.currentPlayer;
 
-    state.bid.activePlayers[player] = false;
+    state.bid.hasBid[player] = true;
 
     state.bid.passed[player] = true;
 
-    state.bid.passCount++;
-
-if(
-    state.bid.currentBid === null &&
-    state.bid.passCount === 3
-){
-
-    const activePlayer =
-        state.bid.activePlayers
-            .findIndex(x=>x);
-
-    state.bid.currentPlayer =
-        activePlayer;
-
-    state.revealedSeat =
-        activePlayer;
-
-    render();
-
-    renderForcedBid();
-
-    return;
-}
-    const active =
-        state.bid.activePlayers
-            .filter(x => x).length;
-
-    if(active <= 1){
-
-    const activePlayer =
-        state.bid.activePlayers
-            .findIndex(x=>x);
-
-    state.revealedSeat =
-        activePlayer;
-
-    render();
-
-    finishBid();
-
-    return;
-}
+    if(state.bid.hasBid.every(x => x)){
+        finishBid();
+        return;
+    }
 
     nextBidPlayer();
-
-    renderBidOptions();
 }
-
 
 
 
@@ -2627,14 +2706,12 @@ ui.teamScoreB2.textContent = scoreB;
     renderLog();
     renderSavedList();
     saveAppData();
-el("contractInfo").textContent =
-    state.contractInfo;
-el("scoreA").textContent =
-    state.matchScore.A;
-
-el("scoreB").textContent =
-    state.matchScore.B;
+    el("contractInfo").textContent = state.contractInfo;
+    el("scoreA").textContent = state.matchScore.A;
+    el("scoreB").textContent = state.matchScore.B;
+    el("targetScore").textContent = state.matchTarget;
   }
+
 
   function showToast(text) {
     ui.toast.textContent = text;
