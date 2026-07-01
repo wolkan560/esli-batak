@@ -1,10 +1,55 @@
 <!DOCTYPE html>
+
+<!--
+==========================================================
+ Batak Eğitim Masası
+----------------------------------------------------------
+ Version : v6.0
+ Status  : Development
+
+ Author  : Volkan Aydoğan
+
+==========================================================
+ SÜRÜM NOTLARI
+==========================================================
+
+DONE v6.0
+✔ Üst başlıktaki açıklama metni kaldırıldı.
+✔ Topbar daha kompakt hale getirildi.
+✔ Hamle Geçmişi kaldırıldı.
+✔ Yerine Geliştirme Günlüğü eklendi.
+✔ Kullanılmayan renderLog() sistemi temizlendi.
+✔ Kod mimarisi yeniden düzenlendi.
+✔ Arayüz sadeleştirildi.
+✔ Responsive görünüm iyileştirildi.
+✔ Sağ panel optimize edildi.
+✔ Geliştirme Günlüğü eklendi.
+✔ Kod bölümlere ayrıldı.
+✔ Yeni özellikler için altyapı hazırlandı.
+
+TODO v6.0
+□ Responsive düzen tamamlanacak.
+□ Sağ panel optimize edilecek.
+□ 1080p görünümü iyileştirilecek.
+
+==========================================================
+-->
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Batak Eğitim Masası</title>
   <style>
+
+
+/* =======================================================
+   DONE v6.0
+----------------------------------------------------------
+   - Üst başlıktaki açıklama metni kaldırıldı.
+   - Topbar daha kompakt hale getirildi.
+======================================================= */
+
 
 
 /* =======================================================
@@ -80,16 +125,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 12px 14px;
+      padding:10px 12px;
       background: linear-gradient(180deg, rgba(24,33,52,.96), rgba(17,24,39,.88));
     }
 
     .title {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      min-width: 270px;
-    }
+    min-width: 220px;
+}
 
     .title h1 {
       margin: 0;
@@ -97,27 +139,25 @@
       letter-spacing: .3px;
     }
 
-    .title .sub {
-      color: var(--muted);
-      font-size: 13px;
-    }
 
     .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
 
-    button, select, input[type="text"] {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 14px;
-      outline: none;
-    }
+button,
+select,
+input[type="text"] {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    border-radius: 12px;
+    padding: 8px 10px;
+    font-size: 13px;
+    outline: none;
+}
 
 
 #leaderSelect,
@@ -166,7 +206,7 @@
 
    .layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 200px;
+    grid-template-columns: minmax(0, 1fr) 180px;
     gap: 10px;
     min-height: 0;
 }
@@ -176,7 +216,15 @@
 /* =======================================================
    SIDEPANEL
 ======================================================= */
-     .sidepanel h2 {
+    .sidepanel{
+    display:grid;
+    grid-template-rows:auto auto 1fr;
+    gap:8px;
+    min-height:0;
+}
+
+
+ .sidepanel h2 {
     font-size: 13px;
 }
 
@@ -587,50 +635,60 @@
 ======================================================= */
 
     .panel-box {
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 12px;
-      min-height: 0;
-    }
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 8px;
+    min-height: 0;
+}
 
-    .panel-box h2 {
-      margin: 0 0 10px 0;
-      font-size: 15px;
-    }
+    .panel-box h2{
+    margin:0 0 6px 0;
+    font-size:13px;
+}
 
     .panel-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4px;
+}
 
-    .saved-list, .log {
-      max-height: 220px;
-      overflow: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-right: 2px;
-    }
+    .saved-list{
+    max-height:160px;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding-right:2px;
+}
+
+.log{
+    flex:1;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding-right:2px;
+    min-height:0;
+}
 
     .saved-item {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 8px;
-      padding: 10px;
+      padding:6px 8px;
       border-radius: 12px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.06);
       align-items: center;
     }
 
-    .saved-item .name {
-      font-weight: 700;
-      font-size: 13px;
-    }
+    .saved-item .name{
+    font-weight:600;
+    font-size:12px;
+}
 
     .saved-item .info, .log-item {
       color: var(--muted);
@@ -638,7 +696,7 @@
     }
 
     .log-item {
-      padding: 9px 10px;
+      padding:6px 8px;
       border-radius: 12px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.06);
@@ -656,6 +714,49 @@
       flex-wrap: wrap;
     }
 
+
+
+/* =======================================================
+   CHANGELOG PANEL
+======================================================= */
+
+.changelog{
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:12px;
+
+}
+
+.changelog-version{
+
+    color:#ffd166;
+    font-weight:700;
+
+}
+
+.changelog-status{
+
+    color:var(--muted);
+    margin-bottom:6px;
+
+}
+
+.changelog-title{
+
+    color:#8bffb0;
+    font-weight:700;
+    margin-top:8px;
+
+}
+
+.changelog-item{
+
+    padding-left:8px;
+    color:#ddd;
+
+}
 
 
 
@@ -755,9 +856,9 @@
       color: var(--muted);
     }
 
-    .inline-input {
-      width: 130px;
-    }
+    .inline-input{
+    width:80px;
+}
 
     .hidden {
       display: none !important;
@@ -1037,16 +1138,19 @@
 <body>
 <div class="app">
   <div class="topbar">
-    <div class="controls">
-   <hr>
+    <div class="title">
+  <h1>Batak Eğitim Masası</h1>
+</div>
 
-<label><input type="checkbox" id="lock0"> Kuzey Sabit</label>
-<label><input type="checkbox" id="lock1"> Doğu Sabit</label>
-<label><input type="checkbox" id="lock2"> Güney Sabit</label>
-<label><input type="checkbox" id="lock3"> Batı Sabit</label>
+    <div class="controls">
+
+<label><input type="checkbox" id="lock0"> Kuzey</label>
+<label><input type="checkbox" id="lock1"> Doğu</label>
+<label><input type="checkbox" id="lock2"> Güney</label>
+<label><input type="checkbox" id="lock3"> Batı</label>
 
 <button id="partialDealBtn">
-Sabit Ellerle Yeniden Dağıt
+🔒 Sabit Dağıt
 </button>
   
 <select id="swapPlayer1" class="swap-select">
@@ -1242,10 +1346,13 @@ Sabit Ellerle Yeniden Dağıt
         <div class="saved-list" id="savedList"></div>
       </div>
 
-      <div class="panel-box" style="min-height:0;">
-        <h2>Hamle geçmişi</h2>
-        <div class="log" id="log"></div>
-      </div>
+      <div class="panel-box">
+
+    <h2>📋 Geliştirme Günlüğü</h2>
+
+    <div id="changelog"></div>
+
+</div>
     </div>
   </div>
 
@@ -1272,6 +1379,11 @@ Sabit Ellerle Yeniden Dağıt
 
 <script>
 (() => {
+
+
+/* =======================================================
+   CONSTANTS
+======================================================= */
   const SUITS = ["H", "S", "D", "C"];
   const SUIT_SYMBOL = { S: "♠", H: "♥", D: "♦", C: "♣" };
   const SUIT_NAME = { S: "Maça", H: "Kupa", D: "Karo", C: "Sinek" };
@@ -1281,7 +1393,17 @@ Sabit Ellerle Yeniden Dağıt
   const TEAM_OF = (i) => (i % 2 === 0 ? "A" : "B"); // 0-2 A, 1-3 B
   const STORAGE_KEY = "batak_egitim_masalari_v1";
 
-  const el = (id) => document.getElementById(id);
+
+/* =======================================================
+   UTILITIES
+======================================================= */
+
+const el = (id) => document.getElementById(id);
+
+
+/* =======================================================
+   APPLICATION STATE
+======================================================= */
   const state = {
     dealNo: 0,
     deckSeed: null,
@@ -1319,18 +1441,22 @@ Sabit Ellerle Yeniden Dağıt
     }
 };
 
+
+
+/* =======================================================
+   UI REFERENCES
+======================================================= */
   const ui = {
     dealPill: el("dealPill"),
     phasePill: el("phasePill"),
     turnPill: el("turnPill"),
     trumpPill: el("trumpPill"),
     trickPill: el("trickPill"),
-teamScoreA: el("teamScoreA"),
-teamScoreB: el("teamScoreB"),
-teamScoreA2: el("teamScoreA2"),
-teamScoreB2: el("teamScoreB2"),
+    teamScoreA: el("teamScoreA"),
+    teamScoreB: el("teamScoreB"),
+    teamScoreA2: el("teamScoreA2"),
+    teamScoreB2: el("teamScoreB2"),
     winnerText: el("winnerText"),
-    log: el("log"),
     savedList: el("savedList"),
     trickGrid: el("trickGrid"),
     leaderSelect: el("leaderSelect"),
@@ -1338,136 +1464,480 @@ teamScoreB2: el("teamScoreB2"),
     toast: el("toast")
   };
 
-  function cloneState() {
-    return {
-      dealNo: state.dealNo,
-      deckSeed: state.deckSeed,
-      hands: state.hands.map(h => h.map(c => ({...c}))),
-      selectedTrump: state.selectedTrump,
-      leader: state.leader,
-      currentTurn: state.currentTurn,
-      currentTrick: state.currentTrick.map(x => ({...x})),
-      completedTricks: state.completedTricks.map(t => ({
-        leader: t.leader,
-        winner: t.winner,
-        trump: t.trump,
-        cards: t.cards.map(c => ({...c}))
-      })),
-      history: state.history.slice(),
-      redo: state.redo.slice(),
-      phase: state.phase,
-      winnerOfLastTrick: state.winnerOfLastTrick,
-      scores: { ...state.scores }
-    };
-  }
 
-  function restoreState(snapshot) {
-    state.dealNo = snapshot.dealNo;
-    state.deckSeed = snapshot.deckSeed;
-    state.hands = snapshot.hands.map(h => h.map(c => ({...c})));
-    state.selectedTrump = snapshot.selectedTrump;
-    state.leader = snapshot.leader;
-    state.currentTurn = snapshot.currentTurn;
-    state.currentTrick = snapshot.currentTrick.map(x => ({...x}));
-    state.completedTricks = snapshot.completedTricks.map(t => ({
-      leader: t.leader,
-      winner: t.winner,
-      trump: t.trump,
-      cards: t.cards.map(c => ({...c}))
-    }));
-    state.history = snapshot.history.slice();
-    state.redo = snapshot.redo.slice();
-    state.phase = snapshot.phase;
-    state.winnerOfLastTrick = snapshot.winnerOfLastTrick;
-    state.scores = { ...snapshot.scores };
+/* =======================================================
+   CHANGELOG DATA
+======================================================= */
+
+const changelog = {
+
+    version: "v6.0",
+
+    status: "Development",
+
+    done: [
+
+        "Kod mimarisi yeniden düzenlendi",
+
+        "JavaScript fonksiyonları kategorilere ayrıldı",
+
+        "CSS bölümleri düzenlendi",
+
+        "Topbar sadeleştirildi",
+
+        "Sağ panel optimize edildi",
+
+        "Responsive görünüm iyileştirildi",
+
+        "Geliştirme Günlüğü eklendi",
+
+        "Yeni ihale sistemi altyapısı oluşturuldu"
+
+    ],
+
+    todo: [
+
+        "Claim (Kalan Elleri Teklif Et)",
+
+        "Mecburi 7",
+
+        "Kağıdı At"
+
+    ]
+
+};
+
+
+
+/* =======================================================
+   INITIALIZATION
+======================================================= */
+  function init() {
+
+    loadAppData();
+
+    fillLeaderOptions();
+
+    setupButtons();
+
+    renderChangelog();
+
     syncControlsFromState();
+
+    state.initialSnapshot = cloneState();
+
+    // Oyuncu olayları
+    for(let i=1;i<=4;i++){
+
+    const player = i - 1;
+
+    el(`name${i}`).style.cursor = "pointer";
+
+    // TEK TIK
+    el(`name${i}`).addEventListener("click",()=>{
+
+        if(state.lockedSeats.includes(player)) return;
+
+        state.revealedSeat =
+            state.revealedSeat === player
+            ? null
+            : player;
+
+        render();
+    });
+
+    // ÇİFT TIK
+    el(`name${i}`).addEventListener("dblclick",()=>{
+
+        if(state.lockedSeats.includes(player)){
+
+            state.lockedSeats =
+                state.lockedSeats.filter(x => x !== player);
+
+        }else{
+
+            state.lockedSeats.push(player);
+
+        }
+
+        render();
+    });
+}
     render();
+
+el("closeMatchBtn").addEventListener("click",()=>{
+
+    // Popup kapansın
+    el("matchModal").classList.add("hidden");
+
+    // Maç puanı sıfırlansın
+    resetMatch();
+
+    // El ve ihale temizlensin
+    resetBid();
+
+    resetDeal();
+
+    // Kartlar toplansın
+    state.hands = [[], [], [], []];
+
+    render();
+
+    showToast("Maç kapatıldı.");
+
+});
+
+
+    el("newMatchBtn").addEventListener("click", startNewMatch);
+    showToast("Hazır. Yeni el dağıt.");
   }
 
-  function randInt(max) {
-    return Math.floor(Math.random() * max);
+
+  function syncControlsFromState() {
+    ui.trumpSelect.value = state.selectedTrump || "";
+    ui.leaderSelect.value = String(state.leader);
   }
 
-  function createDeck() {
-    const deck = [];
-    for (const suit of SUITS) {
-      for (const rank of RANKS) {
-        deck.push({
-          suit,
-          rank,
-          value: RANK_VALUE[rank],
-          id: suit + rank
-        });
-      }
+
+ 
+/* =======================================================
+   BUTTON EVENTS
+======================================================= */
+  function setupButtons() {
+    el("showAllBtn").addEventListener("click", () => {
+
+    // Hepsini aç
+    if (state.lockedSeats.length !== 4) {
+        state.lockedSeats = [0, 1, 2, 3];
+        state.revealedSeat = null;
+        showToast("Tüm oyuncuların eli açıldı.");
     }
-    return shuffle(deck);
-  }
-
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = randInt(i + 1);
-      [array[i], array[j]] = [array[j], array[i]];
+    // Tekrar basılırsa kapat
+    else {
+        state.lockedSeats = [];
+        state.revealedSeat = null;
+        showToast("Tüm oyuncuların eli kapatıldı.");
     }
-    return array;
+
+    render();
+});
+el("partialDealBtn").addEventListener(
+    "click",
+    redealKeepingSelectedHands
+);
+
+el("swapHandsBtn").addEventListener(
+    "click",
+    swapPlayerHands
+);
+
+    el("dealBtn").addEventListener("click", () => {
+      if (state.phase === "playing" && state.currentTrick.length && !confirm("Yeni el dağıtılsın mı? Mevcut tur silinecek.")) return;
+      dealNewHand();
+    });
+    el("resetBtn").addEventListener("click", () => {
+      if (!state.initialSnapshot) return showToast("Önce bir el dağıt.");
+      restoreState(JSON.parse(JSON.stringify(state.initialSnapshot)));
+      showToast("Bu el sıfırlandı.");
+    });
+    el("undoBtn").addEventListener("click", undo);
+    el("redoBtn").addEventListener("click", redo);
+    el("saveBtn").addEventListener("click", saveHand);
+    el("clearSavedBtn").addEventListener("click", clearSaved);
+    el("applyNamesBtn").addEventListener("click", applyNames);
+    el("bidStartBtn").addEventListener("click", openBidModal);
+    el("startBtn").addEventListener("click", startGame);
+    ui.trumpSelect.addEventListener("change", onTrumpChange);
+    ui.leaderSelect.addEventListener("change", onLeaderChange);
   }
 
 
-function resetBid(){
 
-    state.bid.currentBid = null;
-    state.bid.winner = null;
-    state.bid.currentPlayer = null;
+/* =======================================================
+   APPLICATION SETTINGS
+======================================================= */
+  function applyNames() {
+    el("name1").textContent = el("player1").value.trim() || "Kuzey";
+    el("name2").textContent = el("player2").value.trim() || "Doğu";
+    el("name3").textContent = el("player3").value.trim() || "Güney";
+    el("name4").textContent = el("player4").value.trim() || "Batı";
+    render();
+    saveAppData();
+    showToast("Oyuncu adları güncellendi.");
+  }
 
-    state.bid.passCount = 0;
+function onTrumpChange() {
+    state.selectedTrump = ui.trumpSelect.value || "";
+    renderTop();
+    saveAppData();
+  }
 
-    state.bid.passed = [
-        false,
-        false,
-        false,
-        false
-    ];
-
-    state.bid.activePlayers = [
-        true,
-        true,
-        true,
-        true
-    ];
-
-}
+  function onLeaderChange() {
+    state.leader = Number(ui.leaderSelect.value);
+    if (state.phase === "playing" && state.currentTrick.length === 0) {
+      state.currentTurn = state.leader;
+    }
+    renderTop();
+    saveAppData();
+  }
 
 
-function resetDeal(){
+/* =======================================================
+   SAVE / LOAD
+======================================================= */
 
-    state.selectedTrump = "";
-
-    state.leader = 0;
-
-    state.currentTurn = 0;
-
-    state.currentTrick = [];
-
-    state.completedTricks = [];
-
-    state.scores = {
-        A:0,
-        B:0
+  function saveHand() {
+    if (!state.hands.some(h => h.length || state.currentTrick.length)) {
+      showToast("Kaydedilecek bir el yok.");
+      return;
+    }
+    const name = prompt("Kayıt adı:", `El ${state.dealNo}`);
+    if (name === null) return;
+    const item = {
+      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+      name: name.trim() || `El ${state.dealNo}`,
+      createdAt: Date.now(),
+      dealNo: state.dealNo,
+      snapshot: cloneState()
     };
+    state.savedHands.push(item);
+    saveAppData();
+    renderSavedList();
+    showToast("El kaydedildi.");
+  }
 
-    state.history = [];
 
-    state.redo = [];
+  function loadSavedHand(id) {
+    const item = state.savedHands.find(x => x.id === id);
+    if (!item) return;
+    restoreState(JSON.parse(JSON.stringify(item.snapshot)));
+    state.initialSnapshot = JSON.parse(JSON.stringify(item.snapshot));
+    showToast("Kayıtlı el yüklendi.");
+  }
 
-    state.phase = "distribution";
+  function deleteSavedHand(id) {
+    if (!confirm("Bu kayıt silinsin mi?")) return;
+    state.savedHands = state.savedHands.filter(x => x.id !== id);
+    saveAppData();
+    renderSavedList();
+    showToast("Kayıt silindi.");
+  }
 
-    state.winnerOfLastTrick = null;
+  function clearSaved() {
+    if (!confirm("Tüm kayıtlı eller silinsin mi?")) return;
+    state.savedHands = [];
+    saveAppData();
+    renderSavedList();
+    showToast("Kayıtlar temizlendi.");
+  }
 
-    state.revealedSeat = null;
+  function saveAppData() {
+    const payload = {
+      dealNo: state.dealNo,
+      savedHands: state.savedHands,
+      names: [
+        el("player1").value,
+        el("player2").value,
+        el("player3").value,
+        el("player4").value
+      ]
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }
 
-    state.lockedSeats = [];
+  function loadAppData() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+      const payload = JSON.parse(raw);
+      state.dealNo = payload.dealNo || 0;
+      state.savedHands = Array.isArray(payload.savedHands) ? payload.savedHands : [];
+      if (Array.isArray(payload.names) && payload.names.length === 4) {
+        el("player1").value = payload.names[0] || "Kuzey";
+        el("player2").value = payload.names[1] || "Doğu";
+        el("player3").value = payload.names[2] || "Güney";
+        el("player4").value = payload.names[3] || "Batı";
+      }
+    } catch (e) {}
+  }
+
+
+/* =======================================================
+   MATCH SYSTEM
+======================================================= */
+
+function calculateMatchScore(){
+
+    const bidWinner = state.bid.winner;
+
+    if(bidWinner === null) return;
+
+    const bid = state.bid.currentBid;
+
+    const bidTeam =
+        TEAM_OF(bidWinner);
+
+    const otherTeam =
+        bidTeam === "A"
+            ? "B"
+            : "A";
+
+    const bidTricks =
+        state.scores[bidTeam];
+
+    const otherTricks =
+        state.scores[otherTeam];
+
+    // ihaleyi alan takım
+
+    if(bidTricks >= bid){
+
+        state.matchScore[bidTeam] +=
+            bidTricks;
+
+    }else{
+
+        state.matchScore[bidTeam] -=
+            bid;
+    }
+
+    // karşı takım
+
+    if(otherTricks === 0){
+
+        state.matchScore[otherTeam] -=
+            bid;
+
+    }else{
+
+        state.matchScore[otherTeam] +=
+            otherTricks;
+    }
 
 }
 
+
+function showMatchWinner(team){
+
+    const modal = el("matchModal");
+
+    const a = state.matchScore.A;
+    const b = state.matchScore.B;
+
+    el("matchWinner").textContent =
+        team === "A"
+        ? "🏆 Kuzey - Güney Kazandı"
+        : "🏆 Doğu - Batı Kazandı";
+
+    el("matchScore").innerHTML = `
+
+        <hr>
+
+        <div class="final-score-row">
+
+            <span>Kuzey - Güney</span>
+
+            <span class="${a < 0 ? 'score-red' : 'score-green'}">
+                ${a}
+            </span>
+
+        </div>
+
+        <hr>
+
+        <div class="final-score-row">
+
+            <span>Doğu - Batı</span>
+
+            <span class="${b < 0 ? 'score-red' : 'score-green'}">
+                ${b}
+            </span>
+
+        </div>
+
+        <hr>
+
+    `;
+
+    modal.classList.remove("hidden");
+
+}
+
+
+
+function checkMatchWinner(){
+
+    const a = state.matchScore.A;
+    const b = state.matchScore.B;
+
+    // Henüz hedef puana ulaşan yok
+    if(a < state.matchTarget && b < state.matchTarget){
+        return;
+    }
+
+    // İki takım da hedefi geçti
+    if(a >= state.matchTarget && b >= state.matchTarget){
+
+        // Berabere → Uzatma
+        if(a === b){
+
+            showToast("🏆 Berabere! Uzatma eli oynanacak.");
+
+            state.extraDeal = true;
+
+            return;
+        }
+
+        // Yüksek puan kazanır
+        if(a > b){
+
+            showMatchWinner("A");
+
+        }else{
+
+            showMatchWinner("B");
+
+        }
+
+        return;
+    }
+
+    // Sadece Kuzey-Güney hedefe ulaştı
+    if(a >= state.matchTarget){
+
+        showMatchWinner("A");
+
+        return;
+    }
+
+    // Sadece Doğu-Batı hedefe ulaştı
+    if(b >= state.matchTarget){
+
+        showMatchWinner("B");
+
+        return;
+    }
+
+}
+
+
+function newMatch(){
+
+    el("matchModal")
+        .classList
+        .add("hidden");
+
+    resetMatch();
+
+    dealNewHand();
+
+    render();
+
+    showToast(
+        "🏆 Yeni maç başladı."
+    );
+
+}
 
 
 function resetMatch(){
@@ -1497,6 +1967,334 @@ function startNewMatch(){
 }
 
 
+/* =======================================================
+   AUCTION SYSTEM
+======================================================= */
+
+function openBidModal(){
+
+    determineBidStarter();
+    resetBidState();
+
+    state.revealedSeat =
+        state.bid.currentPlayer;
+
+    render(); // BUNU EKLE
+
+    document
+        .getElementById("bidPanel")
+        .classList.remove("hidden");
+
+    renderBidOptions();
+}
+
+
+
+function renderBidOptions(){
+
+    state.revealedSeat = state.bid.currentPlayer;
+
+    if(state.bid.currentBid){
+
+        document.getElementById("mandatorySeven").textContent =
+            getSeatLabel(state.bid.winner) +
+            " " +
+            state.bid.currentBid +
+            " dedi";
+
+    }else{
+
+        const mandatory =
+            getMandatorySevenPlayer(state.bidStarter);
+
+        document.getElementById("mandatorySeven").textContent =
+            getSeatLabel(mandatory) +
+            " mecbur 7'ci";
+    }
+
+    const player = state.bid.currentPlayer;
+
+    document.getElementById("bidPlayerName").textContent =
+        getSeatLabel(player) + " teklif seç";
+
+    const container =
+        document.getElementById("bidButtons");
+
+    container.innerHTML = "";
+
+    // İlk 3 oyuncu PAS dediyse son oyuncu mecburi teklif verecek
+
+const passCount =
+    state.bid.passed.filter(x => x).length;
+
+const forcedBid =
+    state.bid.currentBid === null &&
+    passCount === 3;
+
+    // Mecburi teklif değilse PAS butonunu göster
+    if (!forcedBid) {
+
+        const passBtn =
+            document.createElement("button");
+
+        passBtn.textContent = "PAS";
+        passBtn.className = "pass";
+        passBtn.onclick = () => makeBidPass();
+
+        container.appendChild(passBtn);
+    }
+
+    // Tekliflerin başlangıcı
+    let start;
+
+    if (forcedBid) {
+        start = 7;
+    } else if (state.bid.currentBid === null) {
+        start = 8;
+    } else {
+        start = state.bid.currentBid + 1;
+    }
+
+    for(let i = start; i <= 13; i++){
+
+        const btn =
+            document.createElement("button");
+
+        btn.textContent = i;
+
+        btn.onclick = () => makeBid(i);
+
+        container.appendChild(btn);
+    }
+}
+
+
+
+function nextBidPlayer(){
+
+    if(state.bid.hasBid.every(x => x)){
+        finishBid();
+        return;
+    }
+
+    const rotation = {
+        0: 3,
+        3: 2,
+        2: 1,
+        1: 0
+    };
+
+    let p = state.bid.currentPlayer;
+
+    do{
+        p = rotation[p];
+    }while(state.bid.hasBid[p]);
+
+    state.bid.currentPlayer = p;
+    state.revealedSeat = p;
+
+    render();
+    renderBidOptions();
+}
+
+
+
+function resetBid(){
+
+    state.bid.currentBid = null;
+    state.bid.winner = null;
+    state.bid.currentPlayer = null;
+
+    state.bid.passCount = 0;
+
+    state.bid.passed = [
+        false,
+        false,
+        false,
+        false
+    ];
+
+    state.bid.activePlayers = [
+        true,
+        true,
+        true,
+        true
+    ];
+
+}
+
+
+
+
+function resetBidState(){
+
+    state.bid = {
+        currentBid: null,
+        winner: null,
+        currentPlayer: state.bidStarter,
+        passed: [false, false, false, false],
+        activePlayers: [true, true, true, true],
+        passCount: 0,
+        hasBid: [false, false, false, false]
+    };
+}
+
+
+
+ function determineBidStarter(){
+
+    const BID_ROTATION = [0,3,2,1];
+
+    if(state.nextBidStarter === null){
+
+        state.bidStarter =
+            BID_ROTATION[
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+    }else{
+
+        state.bidStarter =
+            state.nextBidStarter;
+    }
+
+    const idx =
+        BID_ROTATION.indexOf(
+            state.bidStarter
+        );
+
+    state.nextBidStarter =
+        BID_ROTATION[
+            (idx + 1) % 4
+        ];
+}
+
+
+
+function checkBidFinish(){
+
+    const active =
+        state.bid.activePlayers
+            .filter(x => x).length;
+
+    if(active <= 1){
+
+        const winner =
+            state.bid.activePlayers.findIndex(x => x);
+
+        state.revealedSeat = winner;
+
+        render();
+
+        finishBid();
+    }
+}
+
+
+
+function makeBid(value){
+
+    state.bid.currentBid = value;
+
+    state.bid.winner = state.bid.currentPlayer;
+
+    state.bid.hasBid[state.bid.currentPlayer] = true;
+
+    // 13 denildiyse ihale hemen biter
+    if (value === 13) {
+        finishBid();
+        return;
+    }
+
+    nextBidPlayer();
+}
+
+
+function makeBidPass(){
+
+    const player = state.bid.currentPlayer;
+
+    state.bid.hasBid[player] = true;
+
+    state.bid.passed[player] = true;
+
+    if(state.bid.hasBid.every(x => x)){
+        finishBid();
+        return;
+    }
+
+    nextBidPlayer();
+}
+
+
+
+
+function finishBid(){
+
+    state.revealedSeat = null;
+
+    document
+    .getElementById("bidPanel")
+    .classList.add("hidden");
+
+    const winner =
+        state.bid.winner;
+
+    const bid =
+        state.bid.currentBid;
+
+    if(winner === null){
+
+        showToast("İhale oluşmadı.");
+
+        return;
+    }
+
+    addHistory(
+        `${getSeatLabel(winner)} `
+        + `${bid} aldı.`
+    );
+
+
+state.contractInfo =
+    getSeatLabel(winner)
+    + " aldı - Teklif "
+    + bid;
+
+    showToast(
+        getSeatLabel(winner)
+        + " "
+        + bid
+        + " aldı."
+    );
+
+    render();
+}
+
+
+
+function getMandatorySevenPlayer(starter){
+
+    const map = {
+        0: 1, // Kuzey başladıysa Doğu
+        3: 0, // Batı başladıysa Kuzey
+        2: 3, // Güney başladıysa Batı
+        1: 2  // Doğu başladıysa Güney
+    };
+
+    return map[starter];
+}
+
+
+
+
+
+
+/* =======================================================
+   GAME LOGIC
+======================================================= */
 
 
  function dealNewHand() {
@@ -1533,6 +2331,7 @@ function startNewMatch(){
 
     render();
 }
+
 
 function redealKeepingSelectedHands() {
 
@@ -1606,6 +2405,8 @@ render();
 showToast("Seçilen eller korunarak yeni dağıtım yapıldı.");
 }
 
+
+
 function swapPlayerHands() {
 
     const p1 = Number(el("swapPlayer1").value);
@@ -1623,37 +2424,81 @@ function swapPlayerHands() {
 
     showToast(getSeatLabel(p1) + " ile " + getSeatLabel(p2) + " elleri değiştirildi.");
 }
-  function compareCards(a, b) {
-    if (a.suit !== b.suit) return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
-    return b.value - a.value;
-  }
 
-  function cardLabel(card) {
-    return `${card.rank}${SUIT_SYMBOL[card.suit]}`;
-  }
 
-  function cardClass(card) {
-    return (card.suit === "H" || card.suit === "D") ? "red" : "black";
-  }
 
-  function getHandIndexForCard(cardId) {
+function resetDeal(){
 
-    for (let i = 0; i < 4; i++) {
-const positions = [
-    "1 / 2", // Kuzey
-    "2 / 3", // Doğu
-    "3 / 2", // Güney
-    "2 / 1"  // Batı
-];
-      const idx = state.hands[i].findIndex(c => c.id === cardId);
-      if (idx >= 0) return { player: i, index: idx };
+    state.selectedTrump = "";
+
+    state.leader = 0;
+
+    state.currentTurn = 0;
+
+    state.currentTrick = [];
+
+    state.completedTricks = [];
+
+    state.scores = {
+        A:0,
+        B:0
+    };
+
+    state.history = [];
+
+    state.redo = [];
+
+    state.phase = "distribution";
+
+    state.winnerOfLastTrick = null;
+
+    state.revealedSeat = null;
+
+    state.lockedSeats = [];
+
+}
+
+
+function resetCurrentHand() {
+
+    const firstSnapshot = state.initialSnapshot || null;
+
+    if (!firstSnapshot) {
+        showToast("Önce yeni bir el dağıt.");
+        return;
     }
-    return null;
-  }
 
-  function currentLeadSuit() {
-    return state.currentTrick.length ? state.currentTrick[0].card.suit : null;
-  }
+    restoreState(JSON.parse(JSON.stringify(firstSnapshot)));
+
+    showToast("El başlangıç durumuna döndü.");
+}
+
+
+
+function startGame() {
+
+    state.selectedTrump = ui.trumpSelect.value || "";
+
+    state.leader = Number(ui.leaderSelect.value);
+
+    state.currentTurn = state.leader;
+
+    state.phase = "playing";
+
+    addHistory(
+        `Oyun başladı. Koz: ${
+            state.selectedTrump
+                ? SUIT_NAME[state.selectedTrump]
+                : "Yok"
+        }. Başlayan: ${
+            getSeatLabel(state.leader)
+        }.`
+    );
+
+    state.initialSnapshot = cloneState();
+
+    render();
+}
 
   
 function isLegalPlay(player, card) {
@@ -1746,7 +2591,8 @@ function isLegalPlay(player, card) {
     return true;
 }
 
-  
+
+
 
 function playCard(player, cardId) {
    
@@ -1863,8 +2709,6 @@ function playCard(player, cardId) {
 
 
 
-
-
   function determineTrickWinner(trick, trump) {
     const leadSuit = trick[0].card.suit;
     let candidates = trick.map(t => ({...t}));
@@ -1887,26 +2731,9 @@ function playCard(player, cardId) {
     state.history.push({ type: "log", text, time: Date.now() });
   }
 
-  function cloneLite() {
-    return {
-      hands: state.hands.map(h => h.map(c => ({...c}))),
-      selectedTrump: state.selectedTrump,
-      leader: state.leader,
-      currentTurn: state.currentTurn,
-      currentTrick: state.currentTrick.map(x => ({...x})),
-      completedTricks: state.completedTricks.map(t => ({
-        leader: t.leader,
-        winner: t.winner,
-        trump: t.trump,
-        cards: t.cards.map(c => ({...c}))
-      })),
-      phase: state.phase,
-      winnerOfLastTrick: state.winnerOfLastTrick,
-      scores: { ...state.scores }
-    };
-  }
 
-  function undo() {
+
+function undo() {
     const action = state.history.pop();
     if (!action) {
       showToast("Geri alınacak adım yok.");
@@ -1927,6 +2754,7 @@ function playCard(player, cardId) {
     render();
   }
 
+
   function redo() {
     const snapshot = state.redo.pop();
     if (!snapshot) {
@@ -1940,560 +2768,28 @@ function playCard(player, cardId) {
     render();
   }
 
-  function restoreFromLite(lite) {
-    state.hands = lite.hands.map(h => h.map(c => ({...c})));
-    state.selectedTrump = lite.selectedTrump;
-    state.leader = lite.leader;
-    state.currentTurn = lite.currentTurn;
-    state.currentTrick = lite.currentTrick.map(x => ({...x}));
-    state.completedTricks = lite.completedTricks.map(t => ({
-      leader: t.leader,
-      winner: t.winner,
-      trump: t.trump,
-      cards: t.cards.map(c => ({...c}))
-    }));
-    state.phase = lite.phase;
-    state.winnerOfLastTrick = lite.winnerOfLastTrick;
-    state.scores = { ...lite.scores };
+
+
+/* =======================================================
+   RENDER SYSTEM
+======================================================= */
+  function render() {
     syncControlsFromState();
-  }
-
-  function resetCurrentHand() {
-    const saved = state.savedHands.find(x => x.dealNo === state.dealNo);
-    const firstSnapshot = state.initialSnapshot || null;
-    if (!firstSnapshot) {
-      showToast("Önce yeni bir el dağıt.");
-      return;
-    }
-    restoreState(JSON.parse(JSON.stringify(firstSnapshot)));
-    showToast("El başlangıç durumuna döndü.");
-  }
-
-
-
-function resetBidState(){
-
-    state.bid = {
-        currentBid: null,
-        winner: null,
-        currentPlayer: state.bidStarter,
-        passed: [false, false, false, false],
-        activePlayers: [true, true, true, true],
-        passCount: 0,
-        hasBid: [false, false, false, false]
-    };
-}
-
-function openBidModal(){
-
-    determineBidStarter();
-    resetBidState();
-
-    state.revealedSeat =
-        state.bid.currentPlayer;
-
-    render(); // BUNU EKLE
-
-    document
-        .getElementById("bidPanel")
-        .classList.remove("hidden");
-
-    renderBidOptions();
-}
-
-function renderBidOptions(){
-
-    state.revealedSeat = state.bid.currentPlayer;
-
-    if(state.bid.currentBid){
-
-        document.getElementById("mandatorySeven").textContent =
-            getSeatLabel(state.bid.winner) +
-            " " +
-            state.bid.currentBid +
-            " dedi";
-
-    }else{
-
-        const mandatory =
-            getMandatorySevenPlayer(state.bidStarter);
-
-        document.getElementById("mandatorySeven").textContent =
-            getSeatLabel(mandatory) +
-            " mecbur 7'ci";
-    }
-
-    const player = state.bid.currentPlayer;
-
-    document.getElementById("bidPlayerName").textContent =
-        getSeatLabel(player) + " teklif seç";
-
-    const container =
-        document.getElementById("bidButtons");
-
-    container.innerHTML = "";
-
-    // İlk 3 oyuncu PAS dediyse son oyuncu mecburi teklif verecek
-
-const passCount =
-    state.bid.passed.filter(x => x).length;
-
-const forcedBid =
-    state.bid.currentBid === null &&
-    passCount === 3;
-
-    // Mecburi teklif değilse PAS butonunu göster
-    if (!forcedBid) {
-
-        const passBtn =
-            document.createElement("button");
-
-        passBtn.textContent = "PAS";
-        passBtn.className = "pass";
-        passBtn.onclick = () => makeBidPass();
-
-        container.appendChild(passBtn);
-    }
-
-    // Tekliflerin başlangıcı
-    let start;
-
-    if (forcedBid) {
-        start = 7;
-    } else if (state.bid.currentBid === null) {
-        start = 8;
-    } else {
-        start = state.bid.currentBid + 1;
-    }
-
-    for(let i = start; i <= 13; i++){
-
-        const btn =
-            document.createElement("button");
-
-        btn.textContent = i;
-
-        btn.onclick = () => makeBid(i);
-
-        container.appendChild(btn);
-    }
-}
-
-
-
-
-function nextBidPlayer(){
-
-    if(state.bid.hasBid.every(x => x)){
-        finishBid();
-        return;
-    }
-
-    const rotation = {
-        0: 3,
-        3: 2,
-        2: 1,
-        1: 0
-    };
-
-    let p = state.bid.currentPlayer;
-
-    do{
-        p = rotation[p];
-    }while(state.bid.hasBid[p]);
-
-    state.bid.currentPlayer = p;
-    state.revealedSeat = p;
-
-    render();
-    renderBidOptions();
-}
-
-
-function makeBid(value){
-
-    state.bid.currentBid = value;
-
-    state.bid.winner = state.bid.currentPlayer;
-
-    state.bid.hasBid[state.bid.currentPlayer] = true;
-
-    // 13 denildiyse ihale hemen biter
-    if (value === 13) {
-        finishBid();
-        return;
-    }
-
-    nextBidPlayer();
-}
-
-
-function makeBidPass(){
-
-    const player = state.bid.currentPlayer;
-
-    state.bid.hasBid[player] = true;
-
-    state.bid.passed[player] = true;
-
-    if(state.bid.hasBid.every(x => x)){
-        finishBid();
-        return;
-    }
-
-    nextBidPlayer();
-}
-
-
-
-
-
-function calculateMatchScore(){
-
-    const bidWinner = state.bid.winner;
-
-    if(bidWinner === null) return;
-
-    const bid = state.bid.currentBid;
-
-    const bidTeam =
-        TEAM_OF(bidWinner);
-
-    const otherTeam =
-        bidTeam === "A"
-            ? "B"
-            : "A";
-
-    const bidTricks =
-        state.scores[bidTeam];
-
-    const otherTricks =
-        state.scores[otherTeam];
-
-    // ihaleyi alan takım
-
-    if(bidTricks >= bid){
-
-        state.matchScore[bidTeam] +=
-            bidTricks;
-
-    }else{
-
-        state.matchScore[bidTeam] -=
-            bid;
-    }
-
-    // karşı takım
-
-    if(otherTricks === 0){
-
-        state.matchScore[otherTeam] -=
-            bid;
-
-    }else{
-
-        state.matchScore[otherTeam] +=
-            otherTricks;
-    }
-
-}
-
-
-function showMatchWinner(team){
-
-    const modal = el("matchModal");
-
-    const a = state.matchScore.A;
-    const b = state.matchScore.B;
-
-    el("matchWinner").textContent =
-        team === "A"
-        ? "🏆 Kuzey - Güney Kazandı"
-        : "🏆 Doğu - Batı Kazandı";
-
-    el("matchScore").innerHTML = `
-
-        <hr>
-
-        <div class="final-score-row">
-
-            <span>Kuzey - Güney</span>
-
-            <span class="${a < 0 ? 'score-red' : 'score-green'}">
-                ${a}
-            </span>
-
-        </div>
-
-        <hr>
-
-        <div class="final-score-row">
-
-            <span>Doğu - Batı</span>
-
-            <span class="${b < 0 ? 'score-red' : 'score-green'}">
-                ${b}
-            </span>
-
-        </div>
-
-        <hr>
-
-    `;
-
-    modal.classList.remove("hidden");
-
-}
-
-
-function checkMatchWinner(){
-
-    const a = state.matchScore.A;
-    const b = state.matchScore.B;
-
-    // Henüz hedef puana ulaşan yok
-    if(a < state.matchTarget && b < state.matchTarget){
-        return;
-    }
-
-    // İki takım da hedefi geçti
-    if(a >= state.matchTarget && b >= state.matchTarget){
-
-        // Berabere → Uzatma
-        if(a === b){
-
-            showToast("🏆 Berabere! Uzatma eli oynanacak.");
-
-            state.extraDeal = true;
-
-            return;
-        }
-
-        // Yüksek puan kazanır
-        if(a > b){
-
-            showMatchWinner("A");
-
-        }else{
-
-            showMatchWinner("B");
-
-        }
-
-        return;
-    }
-
-    // Sadece Kuzey-Güney hedefe ulaştı
-    if(a >= state.matchTarget){
-
-        showMatchWinner("A");
-
-        return;
-    }
-
-    // Sadece Doğu-Batı hedefe ulaştı
-    if(b >= state.matchTarget){
-
-        showMatchWinner("B");
-
-        return;
-    }
-
-}
-
-
-function newMatch(){
-
-    el("matchModal")
-        .classList
-        .add("hidden");
-
-    resetMatch();
-
-    dealNewHand();
-
-    render();
-
-    showToast(
-        "🏆 Yeni maç başladı."
-    );
-
-}
-
-
-function renderForcedBid(){
-
-    const container =
-        document.getElementById(
-            "bidButtons"
-        );
-
-    container.innerHTML = "";
-
-    for(let i=7;i<=13;i++){
-
-        const btn =
-            document.createElement(
-                "button"
-            );
-
-        btn.textContent = i;
-
-        btn.onclick = ()=>{
-
-            state.bid.currentBid = i;
-
-            state.bid.winner =
-                state.bid.currentPlayer;
-
-            finishBid();
-        };
-
-        container.appendChild(btn);
-    }
-
-    document.getElementById(
-        "bidPlayerName"
-    ).textContent =
-        getSeatLabel(
-            state.bid.currentPlayer
-        )
-        + " almak zorunda";
-}
-
-
-function checkBidFinish(){
-
-    const active =
-        state.bid.activePlayers
-            .filter(x => x).length;
-
-    if(active <= 1){
-
-        const winner =
-            state.bid.activePlayers.findIndex(x => x);
-
-        state.revealedSeat = winner;
-
-        render();
-
-        finishBid();
-    }
-}
-
-
-function finishBid(){
-
-    state.revealedSeat = null;
-
-    document
-    .getElementById("bidPanel")
-    .classList.add("hidden");
-
-    const winner =
-        state.bid.winner;
-
-    const bid =
-        state.bid.currentBid;
-
-    if(winner === null){
-
-        showToast("İhale oluşmadı.");
-
-        return;
-    }
-
-    addHistory(
-        `${getSeatLabel(winner)} `
-        + `${bid} aldı.`
-    );
-
-
-state.contractInfo =
-    getSeatLabel(winner)
-    + " aldı - Teklif "
-    + bid;
-
-    showToast(
-        getSeatLabel(winner)
-        + " "
-        + bid
-        + " aldı."
-    );
-
-    render();
-}
-
-
-function startGame() {
-
-    state.selectedTrump = ui.trumpSelect.value || "";
-
-    state.leader = Number(ui.leaderSelect.value);
-
-    state.currentTurn = state.leader;
-
-    state.phase = "playing";
-
-    addHistory(
-        `Oyun başladı. Koz: ${
-            state.selectedTrump
-                ? SUIT_NAME[state.selectedTrump]
-                : "Yok"
-        }. Başlayan: ${
-            getSeatLabel(state.leader)
-        }.`
-    );
-
-    state.initialSnapshot = cloneState();
-
-    render();
-}
-
-
-
-  function syncControlsFromState() {
-    ui.trumpSelect.value = state.selectedTrump || "";
-    ui.leaderSelect.value = String(state.leader);
-  }
-
-  function saveCurrentSnapshot(prevSnapshot, notify = true) {
-    state.initialSnapshot = cloneState();
-    if (notify) showToast("El başlangıç olarak kaydedildi.");
-  }
-
-  function applyNames() {
-    el("name1").textContent = el("player1").value.trim() || "Kuzey";
-    el("name2").textContent = el("player2").value.trim() || "Doğu";
-    el("name3").textContent = el("player3").value.trim() || "Güney";
-    el("name4").textContent = el("player4").value.trim() || "Batı";
-    render();
+    renderTop();
+    for (let i = 0; i < 4; i++) renderHand(i);
+    renderTrickGrid();
+    renderSavedList();
     saveAppData();
-    showToast("Oyuncu adları güncellendi.");
+    el("contractInfo").textContent = state.contractInfo;
+    el("scoreA").textContent = state.matchScore.A;
+    el("scoreB").textContent = state.matchScore.B;
+    el("targetScore").textContent = state.matchTarget;
   }
 
+ 
 
-function getSeatLabel(i) {
-  return el(`name${i + 1}`).textContent || PLAYER_POSITIONS[i];
-}
 
-function getMandatorySevenPlayer(starter){
-
-    const map = {
-        0: 1, // Kuzey başladıysa Doğu
-        3: 0, // Batı başladıysa Kuzey
-        2: 3, // Güney başladıysa Batı
-        1: 2  // Doğu başladıysa Güney
-    };
-
-    return map[starter];
-}
-
-  function getSeatLabel(i) {
-    return el(`name${i + 1}`).textContent || PLAYER_POSITIONS[i];
-  }
-
-  function renderHand(playerIndex) {
+ function renderHand(playerIndex) {
     const handEl = el(`hand${playerIndex + 1}`);
     handEl.innerHTML = "";
 
@@ -2588,6 +2884,53 @@ previousSuit = card.suit;
     el(`seatMeta${playerIndex + 1}`).textContent = playerIndex === state.leader ? "Başlatan / Son kazanan" : (state.completedTricks.length ? `Son turda başlangıç: ${PLAYER_POSITIONS[state.completedTricks.at(-1).leader]}` : "Başlangıç: -");
   }
 
+
+
+
+
+
+function renderForcedBid(){
+
+    const container =
+        document.getElementById(
+            "bidButtons"
+        );
+
+    container.innerHTML = "";
+
+    for(let i=7;i<=13;i++){
+
+        const btn =
+            document.createElement(
+                "button"
+            );
+
+        btn.textContent = i;
+
+        btn.onclick = ()=>{
+
+            state.bid.currentBid = i;
+
+            state.bid.winner =
+                state.bid.currentPlayer;
+
+            finishBid();
+        };
+
+        container.appendChild(btn);
+    }
+
+    document.getElementById(
+        "bidPlayerName"
+    ).textContent =
+        getSeatLabel(
+            state.bid.currentPlayer
+        )
+        + " almak zorunda";
+}
+
+
+
  function renderTrickGrid() {
     ui.trickGrid.innerHTML = "";
 
@@ -2620,22 +2963,6 @@ previousSuit = card.suit;
     }
   }
 
-  function renderLog() {
-    ui.log.innerHTML = "";
-    const logs = state.history.filter(x => x.type === "log").slice(-20).reverse();
-    for (const item of logs) {
-      const div = document.createElement("div");
-      div.className = "log-item";
-      div.textContent = item.text;
-      ui.log.appendChild(div);
-    }
-    if (!logs.length) {
-      const div = document.createElement("div");
-      div.className = "log-item";
-      div.textContent = "Henüz hamle yok.";
-      ui.log.appendChild(div);
-    }
-  }
 
   function renderSavedList() {
     ui.savedList.innerHTML = "";
@@ -2668,11 +2995,9 @@ previousSuit = card.suit;
       });
   }
 
-  function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[s]));
-  }
 
-  function renderTop() {
+
+function renderTop() {
     ui.dealPill.textContent = `El: ${state.dealNo || "-"}`;
     ui.phasePill.textContent = `Aşama: ${state.phase === "finished" ? "Bitti" : (state.phase === "playing" ? "Oyun" : "Dağıtım")}`;
     ui.turnPill.textContent = `Sıra: ${state.phase === "playing" ? getSeatLabel(state.currentTurn) : "-"}`;
@@ -2693,101 +3018,95 @@ ui.teamScoreB2.textContent = scoreB;
 
 }
 
-  function render() {
-    syncControlsFromState();
-    renderTop();
-    for (let i = 0; i < 4; i++) renderHand(i);
-    renderTrickGrid();
-    renderLog();
-    renderSavedList();
-    saveAppData();
-    el("contractInfo").textContent = state.contractInfo;
-    el("scoreA").textContent = state.matchScore.A;
-    el("scoreB").textContent = state.matchScore.B;
-    el("targetScore").textContent = state.matchTarget;
-  }
 
 
-  function showToast(text) {
+function renderChangelog() {
+
+    const panel = el("changelog");
+
+    panel.className = "changelog";
+
+    panel.innerHTML = `
+
+<div>
+
+<div class="changelog-version">
+Version : ${changelog.version}
+</div>
+
+<div class="changelog-status">
+Status : ${changelog.status}
+</div>
+
+</div>
+
+<div>
+
+<div class="changelog-title">
+✅ DONE
+</div>
+
+${changelog.done.map(item => `<div class="changelog-item">✔ ${item}</div>`).join("")}
+
+</div>
+
+<div>
+
+<div class="changelog-title">
+🚧 TODO
+</div>
+
+${changelog.todo.map(item => `<div class="changelog-item">□ ${item}</div>`).join("")}
+
+</div>
+
+`;
+
+}
+
+
+/* =======================================================
+   UTILITY FUNCTIONS
+======================================================= */
+
+function showToast(text) {
     ui.toast.textContent = text;
     ui.toast.classList.add("show");
+
     clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => ui.toast.classList.remove("show"), 1800);
+
+    showToast._t = setTimeout(() => {
+        ui.toast.classList.remove("show");
+    }, 1800);
+}
+
+
+  function saveCurrentSnapshot(prevSnapshot, notify = true) {
+    state.initialSnapshot = cloneState();
+    if (notify) showToast("El başlangıç olarak kaydedildi.");
   }
 
-  function saveHand() {
-    if (!state.hands.some(h => h.length || state.currentTrick.length)) {
-      showToast("Kaydedilecek bir el yok.");
-      return;
-    }
-    const name = prompt("Kayıt adı:", `El ${state.dealNo}`);
-    if (name === null) return;
-    const item = {
-      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
-      name: name.trim() || `El ${state.dealNo}`,
-      createdAt: Date.now(),
-      dealNo: state.dealNo,
-      snapshot: cloneState()
-    };
-    state.savedHands.push(item);
-    saveAppData();
-    renderSavedList();
-    showToast("El kaydedildi.");
-  }
 
-  function loadSavedHand(id) {
-    const item = state.savedHands.find(x => x.id === id);
-    if (!item) return;
-    restoreState(JSON.parse(JSON.stringify(item.snapshot)));
-    state.initialSnapshot = JSON.parse(JSON.stringify(item.snapshot));
-    showToast("Kayıtlı el yüklendi.");
-  }
 
-  function deleteSavedHand(id) {
-    if (!confirm("Bu kayıt silinsin mi?")) return;
-    state.savedHands = state.savedHands.filter(x => x.id !== id);
-    saveAppData();
-    renderSavedList();
-    showToast("Kayıt silindi.");
-  }
+function getSeatLabel(i) {
+  return el(`name${i + 1}`).textContent || PLAYER_POSITIONS[i];
+}
 
-  function clearSaved() {
-    if (!confirm("Tüm kayıtlı eller silinsin mi?")) return;
-    state.savedHands = [];
-    saveAppData();
-    renderSavedList();
-    showToast("Kayıtlar temizlendi.");
-  }
 
-  function saveAppData() {
-    const payload = {
-      dealNo: state.dealNo,
-      savedHands: state.savedHands,
-      names: [
-        el("player1").value,
-        el("player2").value,
-        el("player3").value,
-        el("player4").value
-      ]
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  }
+function escapeHtml(str) {
+    return String(str).replace(
+        /[&<>"']/g,
+        s => ({
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":"&#39;"
+        }[s])
+    );
+}
 
-  function loadAppData() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    try {
-      const payload = JSON.parse(raw);
-      state.dealNo = payload.dealNo || 0;
-      state.savedHands = Array.isArray(payload.savedHands) ? payload.savedHands : [];
-      if (Array.isArray(payload.names) && payload.names.length === 4) {
-        el("player1").value = payload.names[0] || "Kuzey";
-        el("player2").value = payload.names[1] || "Doğu";
-        el("player3").value = payload.names[2] || "Güney";
-        el("player4").value = payload.names[3] || "Batı";
-      }
-    } catch (e) {}
-  }
+
 
   function fillLeaderOptions() {
     ui.leaderSelect.innerHTML = "";
@@ -2799,169 +3118,156 @@ ui.teamScoreB2.textContent = scoreB;
     }
   }
 
-  function onTrumpChange() {
-    state.selectedTrump = ui.trumpSelect.value || "";
-    renderTop();
-    saveAppData();
-  }
 
-  function onLeaderChange() {
-    state.leader = Number(ui.leaderSelect.value);
-    if (state.phase === "playing" && state.currentTrick.length === 0) {
-      state.currentTurn = state.leader;
-    }
-    renderTop();
-    saveAppData();
-  }
 
-  function setupButtons() {
-    el("showAllBtn").addEventListener("click", () => {
 
-    // Hepsini aç
-    if (state.lockedSeats.length !== 4) {
-        state.lockedSeats = [0, 1, 2, 3];
-        state.revealedSeat = null;
-        showToast("Tüm oyuncuların eli açıldı.");
-    }
-    // Tekrar basılırsa kapat
-    else {
-        state.lockedSeats = [];
-        state.revealedSeat = null;
-        showToast("Tüm oyuncuların eli kapatıldı.");
-    }
-
-    render();
-});
-el("partialDealBtn").addEventListener(
-    "click",
-    redealKeepingSelectedHands
-);
-
-el("swapHandsBtn").addEventListener(
-    "click",
-    swapPlayerHands
-);
-
-    el("dealBtn").addEventListener("click", () => {
-      if (state.phase === "playing" && state.currentTrick.length && !confirm("Yeni el dağıtılsın mı? Mevcut tur silinecek.")) return;
-      dealNewHand();
-    });
-    el("resetBtn").addEventListener("click", () => {
-      if (!state.initialSnapshot) return showToast("Önce bir el dağıt.");
-      restoreState(JSON.parse(JSON.stringify(state.initialSnapshot)));
-      showToast("Bu el sıfırlandı.");
-    });
-    el("undoBtn").addEventListener("click", undo);
-    el("redoBtn").addEventListener("click", redo);
-    el("saveBtn").addEventListener("click", saveHand);
-    el("clearSavedBtn").addEventListener("click", clearSaved);
-    el("applyNamesBtn").addEventListener("click", applyNames);
-    el("bidStartBtn").addEventListener("click", openBidModal);
-    el("startBtn").addEventListener("click", startGame);
-    ui.trumpSelect.addEventListener("change", onTrumpChange);
-    ui.leaderSelect.addEventListener("change", onLeaderChange);
-  }
-
-  function init() {
-    loadAppData();
-    fillLeaderOptions();
-    setupButtons();
+  function restoreFromLite(lite) {
+    state.hands = lite.hands.map(h => h.map(c => ({...c})));
+    state.selectedTrump = lite.selectedTrump;
+    state.leader = lite.leader;
+    state.currentTurn = lite.currentTurn;
+    state.currentTrick = lite.currentTrick.map(x => ({...x}));
+    state.completedTricks = lite.completedTricks.map(t => ({
+      leader: t.leader,
+      winner: t.winner,
+      trump: t.trump,
+      cards: t.cards.map(c => ({...c}))
+    }));
+    state.phase = lite.phase;
+    state.winnerOfLastTrick = lite.winnerOfLastTrick;
+    state.scores = { ...lite.scores };
     syncControlsFromState();
-    state.initialSnapshot = cloneState();
-    for(let i=1;i<=4;i++){
-
-    const player = i - 1;
-
-    el(`name${i}`).style.cursor = "pointer";
-
-    // TEK TIK
-    el(`name${i}`).addEventListener("click",()=>{
-
-        if(state.lockedSeats.includes(player)) return;
-
-        state.revealedSeat =
-            state.revealedSeat === player
-            ? null
-            : player;
-
-        render();
-    });
-
-    // ÇİFT TIK
-    el(`name${i}`).addEventListener("dblclick",()=>{
-
-        if(state.lockedSeats.includes(player)){
-
-            state.lockedSeats =
-                state.lockedSeats.filter(x => x !== player);
-
-        }else{
-
-            state.lockedSeats.push(player);
-
-        }
-
-        render();
-    });
-}
-    render();
-
-el("closeMatchBtn").addEventListener("click",()=>{
-
-    // Popup kapansın
-    el("matchModal").classList.add("hidden");
-
-    // Maç puanı sıfırlansın
-    resetMatch();
-
-    // El ve ihale temizlensin
-    resetBid();
-
-    resetDeal();
-
-    // Kartlar toplansın
-    state.hands = [[], [], [], []];
-
-    render();
-
-    showToast("Maç kapatıldı.");
-
-});
-
-
-    el("newMatchBtn").addEventListener("click", startNewMatch);
-    showToast("Hazır. Yeni el dağıt.");
   }
 
- function determineBidStarter(){
 
-    const BID_ROTATION = [0,3,2,1];
 
-    if(state.nextBidStarter === null){
+  function cloneState() {
+    return {
+      dealNo: state.dealNo,
+      deckSeed: state.deckSeed,
+      hands: state.hands.map(h => h.map(c => ({...c}))),
+      selectedTrump: state.selectedTrump,
+      leader: state.leader,
+      currentTurn: state.currentTurn,
+      currentTrick: state.currentTrick.map(x => ({...x})),
+      completedTricks: state.completedTricks.map(t => ({
+        leader: t.leader,
+        winner: t.winner,
+        trump: t.trump,
+        cards: t.cards.map(c => ({...c}))
+      })),
+      history: state.history.slice(),
+      redo: state.redo.slice(),
+      phase: state.phase,
+      winnerOfLastTrick: state.winnerOfLastTrick,
+      scores: { ...state.scores }
+    };
+  }
 
-        state.bidStarter =
-            BID_ROTATION[
-                Math.floor(
-                    Math.random()*4
-                )
-            ];
+  function restoreState(snapshot) {
+    state.dealNo = snapshot.dealNo;
+    state.deckSeed = snapshot.deckSeed;
+    state.hands = snapshot.hands.map(h => h.map(c => ({...c})));
+    state.selectedTrump = snapshot.selectedTrump;
+    state.leader = snapshot.leader;
+    state.currentTurn = snapshot.currentTurn;
+    state.currentTrick = snapshot.currentTrick.map(x => ({...x}));
+    state.completedTricks = snapshot.completedTricks.map(t => ({
+      leader: t.leader,
+      winner: t.winner,
+      trump: t.trump,
+      cards: t.cards.map(c => ({...c}))
+    }));
+    state.history = snapshot.history.slice();
+    state.redo = snapshot.redo.slice();
+    state.phase = snapshot.phase;
+    state.winnerOfLastTrick = snapshot.winnerOfLastTrick;
+    state.scores = { ...snapshot.scores };
+    syncControlsFromState();
+    render();
+  }
 
-    }else{
+  function randInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
-        state.bidStarter =
-            state.nextBidStarter;
+  function createDeck() {
+    const deck = [];
+    for (const suit of SUITS) {
+      for (const rank of RANKS) {
+        deck.push({
+          suit,
+          rank,
+          value: RANK_VALUE[rank],
+          id: suit + rank
+        });
+      }
     }
+    return shuffle(deck);
+  }
 
-    const idx =
-        BID_ROTATION.indexOf(
-            state.bidStarter
-        );
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = randInt(i + 1);
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
-    state.nextBidStarter =
-        BID_ROTATION[
-            (idx + 1) % 4
-        ];
-}
+  function compareCards(a, b) {
+    if (a.suit !== b.suit) return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
+    return b.value - a.value;
+  }
+
+  function cardLabel(card) {
+    return `${card.rank}${SUIT_SYMBOL[card.suit]}`;
+  }
+
+  function cardClass(card) {
+    return (card.suit === "H" || card.suit === "D") ? "red" : "black";
+  }
+
+  function getHandIndexForCard(cardId) {
+
+    for (let i = 0; i < 4; i++) {
+const positions = [
+    "1 / 2", // Kuzey
+    "2 / 3", // Doğu
+    "3 / 2", // Güney
+    "2 / 1"  // Batı
+];
+      const idx = state.hands[i].findIndex(c => c.id === cardId);
+      if (idx >= 0) return { player: i, index: idx };
+    }
+    return null;
+  }
+
+
+
+  function currentLeadSuit() {
+    return state.currentTrick.length ? state.currentTrick[0].card.suit : null;
+  }
+
+
+  function cloneLite() {
+    return {
+      hands: state.hands.map(h => h.map(c => ({...c}))),
+      selectedTrump: state.selectedTrump,
+      leader: state.leader,
+      currentTurn: state.currentTurn,
+      currentTrick: state.currentTrick.map(x => ({...x})),
+      completedTricks: state.completedTricks.map(t => ({
+        leader: t.leader,
+        winner: t.winner,
+        trump: t.trump,
+        cards: t.cards.map(c => ({...c}))
+      })),
+      phase: state.phase,
+      winnerOfLastTrick: state.winnerOfLastTrick,
+      scores: { ...state.scores }
+    };
+  }
+
 
 window.addEventListener("load", init);
 })();
