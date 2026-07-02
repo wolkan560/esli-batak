@@ -19,13 +19,25 @@ DONE v6.0
 ✔ Hamle Geçmişi kaldırıldı.
 ✔ Yerine Geliştirme Günlüğü eklendi.
 ✔ Kullanılmayan renderLog() sistemi temizlendi.
-✔ Kod mimarisi yeniden düzenlendi.
-✔ Arayüz sadeleştirildi.
-✔ Responsive görünüm iyileştirildi.
-✔ Sağ panel optimize edildi.
-✔ Geliştirme Günlüğü eklendi.
-✔ Kod bölümlere ayrıldı.
-✔ Yeni özellikler için altyapı hazırlandı.
+✔ Kod mimarisi tamamen yeniden düzenlendi.
+✔ Fonksiyonlar kategorilere ayrıldı.
+✔ HTML, CSS ve JavaScript bölümleri temizlendi.
+✔ Render sistemi sadeleştirildi.
+✔ Save / Load sistemi yeniden düzenlendi.
+✔ Sabit Dağıt özelliği eklendi.
+✔ Elleri Yer Değiştir özelliği eklendi.
+✔ İhale sistemi altyapısı tamamlandı.
+✔ Skor sistemi geliştirildi.
+✔ 41'de biter kuralı eklendi.
+✔ Geliştirme Günlüğü paneli eklendi.
+✔ Gereksiz üst bilgi alanları kaldırıldı.
+✔ Takım A / Takım B etiketleri kaldırıldı.
+✔ Başlangıç bilgileri sadeleştirildi.
+✔ Oyuncu adı düzenleme paneli kaldırıldı.
+✔ Açıklama paneli kaldırıldı.
+✔ 1080p tam ekran görünümü optimize edildi.
+✔ 1080p pencere modu büyük ölçüde optimize edildi.
+✔ Arayüz daha ferah ve gerçek masa görünümüne yaklaştırıldı.
 
 TODO v6.0
 □ Responsive düzen tamamlanacak.
@@ -42,15 +54,12 @@ TODO v6.0
   <title>Batak Eğitim Masası</title>
   <style>
 
-
 /* =======================================================
    DONE v6.0
 ----------------------------------------------------------
    - Üst başlıktaki açıklama metni kaldırıldı.
    - Topbar daha kompakt hale getirildi.
 ======================================================= */
-
-
 
 /* =======================================================
    ROOT
@@ -256,18 +265,22 @@ input[type="text"] {
     color: #ffd166;
     margin-top: 6px;
 }
-    .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text);
-      font-size: 13px;
-    }
+
+
+.pill {
+    padding: 6px 13px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text);
+    font-size: 11px;
+}
+
     .pill strong { color: white; }
     .pill.current { border-color: rgba(255,209,102,0.45); background: rgba(255,209,102,0.10); }
     .pill.good { border-color: rgba(124,242,164,0.38); background: rgba(124,242,164,0.10); }
-    .pill.bad { border-color: rgba(255,107,107,0.38); background: rgba(255,107,107,0.10); }
+    .pill.bad { border-color: rgba(255,107,107,0.38); background: rgba(255,107,107,0.10); 
+}
 
 
 
@@ -292,11 +305,13 @@ input[type="text"] {
       justify-content: space-between;
     }
 
-    .status-left, .status-right {
+    .status-left,
+    .status-right {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
+    font-size: 12px;
 }
 
 
@@ -320,8 +335,8 @@ input[type="text"] {
     position:absolute;
 
     left:20px;
-
-    top:280px;
+  
+    top:180px;
 
     width:220px;
 
@@ -532,22 +547,16 @@ input[type="text"] {
     border: 1px dashed rgba(255,255,255,0.14);
     min-height: 180px;
     padding: 10px;
+    gap: 12px;
     display: grid;
     grid-template-rows: auto auto auto;
-    gap: 12px;
+    min-height: 160px;
+    padding: 8px;
+    gap: 8px;
     align-items: center;
     justify-items: center;
     position:relative;
 }
-
-    .trick-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-    }
 
    .trick-grid {
     display: grid;
@@ -556,7 +565,7 @@ input[type="text"] {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    min-height: 170px;
+    min-height: 150px;
 }
 
     .trick-slot {
@@ -597,20 +606,21 @@ input[type="text"] {
       background: rgba(255,209,102,0.10);
     }
 
-    .center-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-    }
+.center-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
 
-    .teams, .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
+.teams,
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
 
 
 
@@ -1121,6 +1131,44 @@ input[type="text"] {
 
 
 /* =======================================================
+   DEVELOPMENT CONTROLS
+======================================================= */
+
+.dev-controls{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 8px;
+    margin-top:12px;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:8px;
+}
+
+.dev-controls label{
+
+    font-size:11px;
+
+    color:var(--muted);
+
+}
+
+.dev-controls select{
+
+    min-width:80px;
+
+}
+
+.status-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+
+
+/* =======================================================
    RESPONSIVE
 ======================================================= */
 
@@ -1189,21 +1237,29 @@ input[type="text"] {
   <div class="layout">
     <div class="game-panel">
       <div class="table">
-        <div class="status-left">
-    <div class="pill current" id="dealPill">El: -</div>
-    <div class="pill" id="phasePill">Aşama: Dağıtım</div>
-    <div class="pill" id="turnPill">Sıra: -</div>
-    <div class="pill" id="trumpPill">Koz: -</div>
-    <div class="pill" id="trickPill">Tur: 0 / 13</div>
+<div class="status-left">
+
     <div id="contractInfo" class="contract-info"></div>
+
+    <div class="dev-controls">
+
+        <label class="mini"></label>
+        <select id="leaderSelect"></select>
+
+        <label class="mini"></label>
+        <select id="trumpSelect">
+            <option value="">Yok</option>
+            <option value="S">Maça ♠</option>
+            <option value="H">Kupa ♥</option>
+            <option value="D">Karo ♦</option>
+            <option value="C">Sinek ♣</option>
+        </select>
+
+    </div>
+
 </div>
 
-<div class="status-right">
-</div>
-
-<!-- BURAYA EKLE -->
 <div class="score-board">
-
     <div class="score-title">
         SKOR TABLOSU
     </div>
@@ -1230,13 +1286,12 @@ input[type="text"] {
           <div class="seat-header">
             <div class="seat-name">
               <div class="name" id="name1">Kuzey</div>
-              <div class="team">Takım A</div>
             </div>
             <div class="count" id="count1">13 kart</div>
           </div>
           <div class="hand" id="hand1"></div>
          <div class="seat-footer">
-    <div class="mini" id="seatMeta1">Başlangıç: -</div>
+    <div class="mini" id="seatMeta1"></div>
     <div class="team-score" id="teamScoreA">Kuzey & Güney: 0</div>
 </div>
         </div>
@@ -1246,48 +1301,23 @@ input[type="text"] {
             <div class="seat-header">
               <div class="seat-name">
                 <div class="name" id="name4">Batı</div>
-                <div class="team">Takım B</div>
               </div>
               <div class="count" id="count4">13 kart</div>
             </div>
             <div class="hand" id="hand4"></div>
            <div class="seat-footer">
-    <div class="mini" id="seatMeta4">Başlangıç: -</div>
+    <div class="mini" id="seatMeta4"></div>
     <div class="team-score" id="teamScoreB">Doğu & Batı: 0</div>
 </div>
           </div>
 
          <div class="played-area">
 
-  <div class="trick-title">
-  </div>
-
   <div class="trick-grid" id="trickGrid"></div>
 
-  <div class="center-info">
-
-    <div class="legend">
-    </div>
-
-    <div class="meta">
-      <label class="mini">Başlayan oyuncu:</label>
-      <select id="leaderSelect"></select>
-
-      <label class="mini">Koz:</label>
-      <select id="trumpSelect">
-        <option value="">Yok</option>
-        <option value="S">Maça ♠</option>
-        <option value="H">Kupa ♥</option>
-        <option value="D">Karo ♦</option>
-        <option value="C">Sinek ♣</option>
-      </select>
-    </div>
-
-  </div>
+ 
 
   <!-- İHALE PANELİ BURADA -->
-
-  
 
 </div>
 
@@ -1295,13 +1325,12 @@ input[type="text"] {
             <div class="seat-header">
               <div class="seat-name">
                 <div class="name" id="name2">Doğu</div>
-                <div class="team">Takım B</div>
               </div>
               <div class="count" id="count2">13 kart</div>
             </div>
             <div class="hand" id="hand2"></div>
             <div class="seat-footer">
-    <div class="mini" id="seatMeta2">Başlangıç: -</div>
+    <div class="mini" id="seatMeta2"></div>
     <div class="team-score" id="teamScoreB2">
         Doğu & Batı: 0
     </div>
@@ -1313,13 +1342,12 @@ input[type="text"] {
           <div class="seat-header">
             <div class="seat-name">
               <div class="name" id="name3">Güney</div>
-              <div class="team">Takım A</div>
             </div>
             <div class="count" id="count3">13 kart</div>
           </div>
           <div class="hand" id="hand3"></div>
          <div class="seat-footer">
-    <div class="mini" id="seatMeta3">Başlangıç: -</div>
+    <div class="mini" id="seatMeta3"></div>
     <div class="team-score" id="teamScoreA2">
         Kuzey & Güney: 0
     </div>
@@ -1328,43 +1356,28 @@ input[type="text"] {
       </div>
     </div>
 
-    <div class="right-panel">
-      <div class="panel-box">
-        <h2>Oyuncu adları</h2>
-        <div class="panel-row">
-          <input class="inline-input" id="player1" type="text" value="Kuzey" />
-          <input class="inline-input" id="player2" type="text" value="Doğu" />
-          <input class="inline-input" id="player3" type="text" value="Güney" />
-          <input class="inline-input" id="player4" type="text" value="Batı" />
-          <button id="applyNamesBtn">Uygula</button>
-        </div>
-        <div class="mini">İsimler, tur sırası ve kayıtlar tek dosya içinde saklanır.</div>
-      </div>
+   <div class="right-panel">
 
-      <div class="panel-box">
+    <div class="panel-box">
         <h2>Kaydedilen eller</h2>
         <div class="saved-list" id="savedList"></div>
-      </div>
+    </div>
 
-      <div class="panel-box">
-
-    <h2>📋 Geliştirme Günlüğü</h2>
-
-    <div id="changelog"></div>
+    <div class="panel-box">
+        <h2>📋 Geliştirme Günlüğü</h2>
+        <div id="changelog"></div>
+    </div>
 
 </div>
-    </div>
-  </div>
 
-  <div class="bottombar footer">
-  </div>
 </div>
 
 <div id="bidPanel" class="bid-modal hidden">
 
     <div class="bid-box">
-       
+
         <div class="bid-title" id="mandatorySeven"></div>
+
         <div class="bid-player" id="bidPlayerName">
             Batı teklif seç
         </div>
@@ -1446,12 +1459,7 @@ const el = (id) => document.getElementById(id);
 /* =======================================================
    UI REFERENCES
 ======================================================= */
-  const ui = {
-    dealPill: el("dealPill"),
-    phasePill: el("phasePill"),
-    turnPill: el("turnPill"),
-    trumpPill: el("trumpPill"),
-    trickPill: el("trickPill"),
+ const ui = {
     teamScoreA: el("teamScoreA"),
     teamScoreB: el("teamScoreB"),
     teamScoreA2: el("teamScoreA2"),
@@ -1462,7 +1470,7 @@ const el = (id) => document.getElementById(id);
     leaderSelect: el("leaderSelect"),
     trumpSelect: el("trumpSelect"),
     toast: el("toast")
-  };
+};
 
 
 /* =======================================================
@@ -1491,7 +1499,13 @@ const changelog = {
 
         "Geliştirme Günlüğü eklendi",
 
-        "Yeni ihale sistemi altyapısı oluşturuldu"
+        "Yeni ihale sistemi altyapısı oluşturuldu",
+
+        "1080p tam ekran görünümü optimize edildi",
+
+        "1080p pencere modu büyük ölçüde optimize edildi",
+
+        "Arayüz daha ferah ve gerçek masa görünümüne yaklaştırıldı",
 
     ],
 
@@ -1644,7 +1658,6 @@ el("swapHandsBtn").addEventListener(
     el("redoBtn").addEventListener("click", redo);
     el("saveBtn").addEventListener("click", saveHand);
     el("clearSavedBtn").addEventListener("click", clearSaved);
-    el("applyNamesBtn").addEventListener("click", applyNames);
     el("bidStartBtn").addEventListener("click", openBidModal);
     el("startBtn").addEventListener("click", startGame);
     ui.trumpSelect.addEventListener("change", onTrumpChange);
@@ -1731,35 +1744,36 @@ function onTrumpChange() {
     showToast("Kayıtlar temizlendi.");
   }
 
-  function saveAppData() {
-    const payload = {
-      dealNo: state.dealNo,
-      savedHands: state.savedHands,
-      names: [
-        el("player1").value,
-        el("player2").value,
-        el("player3").value,
-        el("player4").value
-      ]
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  }
+  
 
-  function loadAppData() {
+function saveAppData() {
+    const payload = {
+        dealNo: state.dealNo,
+        savedHands: state.savedHands
+    };
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(payload)
+    );
+}
+
+function loadAppData() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return;
+
     try {
-      const payload = JSON.parse(raw);
-      state.dealNo = payload.dealNo || 0;
-      state.savedHands = Array.isArray(payload.savedHands) ? payload.savedHands : [];
-      if (Array.isArray(payload.names) && payload.names.length === 4) {
-        el("player1").value = payload.names[0] || "Kuzey";
-        el("player2").value = payload.names[1] || "Doğu";
-        el("player3").value = payload.names[2] || "Güney";
-        el("player4").value = payload.names[3] || "Batı";
-      }
+        const payload = JSON.parse(raw);
+
+        state.dealNo = payload.dealNo || 0;
+
+        state.savedHands = Array.isArray(payload.savedHands)
+            ? payload.savedHands
+            : [];
+
     } catch (e) {}
-  }
+}
+
 
 
 /* =======================================================
@@ -2592,8 +2606,6 @@ function isLegalPlay(player, card) {
 }
 
 
-
-
 function playCard(player, cardId) {
    
     if (state.trickAnimating) return;
@@ -2707,8 +2719,6 @@ function playCard(player, cardId) {
     render();
 }
 
-
-
   function determineTrickWinner(trick, trump) {
     const leadSuit = trick[0].card.suit;
     let candidates = trick.map(t => ({...t}));
@@ -2731,8 +2741,6 @@ function playCard(player, cardId) {
     state.history.push({ type: "log", text, time: Date.now() });
   }
 
-
-
 function undo() {
     const action = state.history.pop();
     if (!action) {
@@ -2754,7 +2762,6 @@ function undo() {
     render();
   }
 
-
   function redo() {
     const snapshot = state.redo.pop();
     if (!snapshot) {
@@ -2767,8 +2774,6 @@ function undo() {
     addHistory("Hamle ileri alındı.");
     render();
   }
-
-
 
 /* =======================================================
    RENDER SYSTEM
@@ -2785,9 +2790,6 @@ function undo() {
     el("scoreB").textContent = state.matchScore.B;
     el("targetScore").textContent = state.matchTarget;
   }
-
- 
-
 
  function renderHand(playerIndex) {
     const handEl = el(`hand${playerIndex + 1}`);
@@ -2881,13 +2883,8 @@ previousSuit = card.suit;
     }
     el(`count${playerIndex + 1}`).textContent = `${state.hands[playerIndex].length} kart`;
     el(`seat${playerIndex + 1}`).classList.toggle("current-turn", state.phase === "playing" && playerIndex === state.currentTurn);
-    el(`seatMeta${playerIndex + 1}`).textContent = playerIndex === state.leader ? "Başlatan / Son kazanan" : (state.completedTricks.length ? `Son turda başlangıç: ${PLAYER_POSITIONS[state.completedTricks.at(-1).leader]}` : "Başlangıç: -");
+    el(`seatMeta${playerIndex + 1}`).textContent = "";
   }
-
-
-
-
-
 
 function renderForcedBid(){
 
@@ -2998,26 +2995,19 @@ function renderForcedBid(){
 
 
 function renderTop() {
-    ui.dealPill.textContent = `El: ${state.dealNo || "-"}`;
-    ui.phasePill.textContent = `Aşama: ${state.phase === "finished" ? "Bitti" : (state.phase === "playing" ? "Oyun" : "Dağıtım")}`;
-    ui.turnPill.textContent = `Sıra: ${state.phase === "playing" ? getSeatLabel(state.currentTurn) : "-"}`;
-    ui.trumpPill.textContent = `Koz: ${state.selectedTrump ? `${SUIT_NAME[state.selectedTrump]} ${SUIT_SYMBOL[state.selectedTrump]}` : "Yok"}`;
-    ui.trickPill.textContent = `Tur: ${state.completedTricks.length} / 13`;
-   
- const scoreA =
-    `${getSeatLabel(0)} & ${getSeatLabel(2)}: ${state.scores.A}`;
 
-const scoreB =
-    `${getSeatLabel(1)} & ${getSeatLabel(3)}: ${state.scores.B}`;
+    const scoreA =
+        `${getSeatLabel(0)} & ${getSeatLabel(2)}: ${state.scores.A}`;
 
-ui.teamScoreA.textContent = scoreA;
-ui.teamScoreB.textContent = scoreB;
+    const scoreB =
+        `${getSeatLabel(1)} & ${getSeatLabel(3)}: ${state.scores.B}`;
 
-ui.teamScoreA2.textContent = scoreA;
-ui.teamScoreB2.textContent = scoreB;  
+    ui.teamScoreA.textContent = scoreA;
+    ui.teamScoreB.textContent = scoreB;
 
+    ui.teamScoreA2.textContent = scoreA;
+    ui.teamScoreB2.textContent = scoreB;
 }
-
 
 
 function renderChangelog() {
